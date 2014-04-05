@@ -29,10 +29,18 @@ static MyDBManager *instance;
     bool result;
     NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS  %@ (_id INTEGER PRIMARY KEY AUTOINCREMENT, _name VARCHAR)",TABLE_FORM];
     result= [[sqlHelper getDatabase] executeUpdate:sql];
+    [self MyLog:[NSString stringWithFormat:@"createTable %@ result=%d",
+                 TABLE_FORM,result]];
     
-    [self MyLog:[NSString stringWithFormat:@"createTables result=%d",result]];
+    
+    sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS  %@ (_id INTEGER PRIMARY KEY AUTOINCREMENT, _name VARCHAR, _form_id INTEGER)",TABLE_NAME_SHEET];
+    result= [[sqlHelper getDatabase] executeUpdate:sql];
+    [self MyLog:[NSString stringWithFormat:@"createTable %@ result=%d",
+                 TABLE_NAME_SHEET,result]];
     return result;
 }
+
+////////////////////////Form/////////////////////////////
 - (bool) insertForm:(Form*) form{
     bool result = NO;
 
@@ -45,6 +53,8 @@ static MyDBManager *instance;
     bool result ;
     result =[[sqlHelper getDatabase] executeUpdate:[NSString stringWithFormat:@"DELETE FROM  %@ WHERE _id=?",TABLE_FORM],[form _id]];
     [self MyLog:[NSString stringWithFormat:@"deleteForm %@ result=%d",form.toString,result]];
+    
+    [self deleteNameSheetByForm:form];
     return result;
 }
 - (bool) updateForm:(Form*) form{
@@ -53,7 +63,7 @@ static MyDBManager *instance;
     [self MyLog:[NSString stringWithFormat:@"updateForm %@ result=%d",form.toString,result]];
     return  result;
 }
-- (NSMutableArray*) getlist{
+- (NSMutableArray*) getlistForm{
     NSMutableArray *list = [[NSMutableArray alloc] init];
     FMResultSet *rs = [[sqlHelper getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@",TABLE_FORM]];
     while ([rs next]) {
@@ -62,12 +72,87 @@ static MyDBManager *instance;
         Form *obj = [[Form alloc]init];
         obj._id = [NSString stringWithFormat:@"%d",[rs intForColumn:@"_id"]];
         obj._name = [rs stringForColumn:@"_name"];
-        [self MyLog:[NSString stringWithFormat:@"getlist=%@",obj.toString]];
+       // [self MyLog:[NSString stringWithFormat:@"getlist=%@",obj.toString]];
         [list addObject:obj];
     }
     [rs close];
     return list;
 }
+
+//////////////////////////////////////////////////////////
+
+//////////////////////////Name sheet////////////////////
+- (bool) insertNameSheet:(NameSheet*) nameSheet
+{
+    bool result = NO;
+    
+    result = [[sqlHelper getDatabase] executeUpdate:[NSString stringWithFormat:@"INSERT INTO %@(_name,_form_id) VALUES(?,?)",TABLE_NAME_SHEET],[nameSheet _name],[nameSheet _form_id]];
+    
+    [self MyLog:[NSString stringWithFormat:@"insertNameSheet %@ result=%d",nameSheet.toString,result]];
+    
+    return  result;
+}
+- (bool) deleteNameSheet:(NameSheet*) nameSheet
+{
+    bool result ;
+    result =[[sqlHelper getDatabase] executeUpdate:[NSString stringWithFormat:@"DELETE FROM  %@ WHERE _id=?",TABLE_NAME_SHEET],[nameSheet _id]];
+    [self MyLog:[NSString stringWithFormat:@"deleteNameSheet %@ result=%d",nameSheet.toString,result]];
+    return result;
+}
+- (bool) deleteNameSheetByForm:(Form*) form
+{
+    bool result ;
+    result =[[sqlHelper getDatabase] executeUpdate:[NSString stringWithFormat:@"DELETE FROM  %@ WHERE _form_id=?",TABLE_NAME_SHEET],[form _id]];
+    [self MyLog:[NSString stringWithFormat:@"deleteNameSheetByForm %@ result=%d",form.toString,result]];
+    return result;
+}
+- (bool) updateNameSheet:(NameSheet*) nameSheet
+{
+    bool result ;
+    result =[[sqlHelper getDatabase] executeUpdate:[NSString stringWithFormat:@"UPDATE %@ SET _name=? WHERE _id=?",TABLE_NAME_SHEET],[nameSheet _name],[nameSheet _id]];
+    [self MyLog:[NSString stringWithFormat:@"updateNameSheet %@ result=%d",nameSheet.toString,result]];
+    
+    return  result;
+}
+
+- (NSMutableArray*) getlistNameSheetByForm:(Form*) form;
+{
+    NSMutableArray *list = [[NSMutableArray alloc] init];
+    FMResultSet *rs = [[sqlHelper getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _form_id = %@",
+                TABLE_NAME_SHEET,[form _id]]];
+    while ([rs next]) {
+        // just print out what we've got in a number of formats.
+        
+        NameSheet *obj = [[Form alloc]init];
+        obj._id = [NSString stringWithFormat:@"%d",[rs intForColumn:@"_id"]];
+        obj._name = [rs stringForColumn:@"_name"];
+        obj._form_id = [rs stringForColumn:@"_form_id"];
+        // [self MyLog:[NSString stringWithFormat:@"getlist=%@",obj.toString]];
+        [list addObject:obj];
+    }
+    [rs close];
+    return list;
+}
+- (NSMutableArray*) getlistNameSheetByFormId:(NSInteger) form_id
+{
+    NSMutableArray *list = [[NSMutableArray alloc] init];
+    FMResultSet *rs = [[sqlHelper getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _form_id = %i",
+                                                             TABLE_NAME_SHEET,form_id]];
+    while ([rs next]) {
+        // just print out what we've got in a number of formats.
+        
+        NameSheet *obj = [[NameSheet alloc]init];
+        obj._id = [NSString stringWithFormat:@"%d",[rs intForColumn:@"_id"]];
+        obj._name = [rs stringForColumn:@"_name"];
+        obj._form_id = [rs stringForColumn:@"_form_id"];
+         [self MyLog:[NSString stringWithFormat:@"getlistNameSheetByFormId=%@",obj.toString]];
+        [list addObject:obj];
+    }
+    [rs close];
+    return list;
+}
+/////////////////////////////////////////////////////////
+
 -(void) MyLog: (NSString*) msg{
 #if defined(LOG_DEBUG)
     NSLog(@"%@ %@",NSStringFromClass([self class]),msg);

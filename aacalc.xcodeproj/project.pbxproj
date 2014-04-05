@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		182466A918F04769002CCF26 /* NameSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 182466A818F04769002CCF26 /* NameSheet.m */; };
 		18293B2718F009A100E453C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18293B2618F009A100E453C9 /* Foundation.framework */; };
 		18293B2918F009A100E453C9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18293B2818F009A100E453C9 /* CoreGraphics.framework */; };
 		18293B2B18F009A100E453C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18293B2A18F009A100E453C9 /* UIKit.framework */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		182466A718F04769002CCF26 /* NameSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameSheet.h; sourceTree = "<group>"; };
+		182466A818F04769002CCF26 /* NameSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameSheet.m; sourceTree = "<group>"; };
 		18293B2318F009A100E453C9 /* aacalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aacalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18293B2618F009A100E453C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18293B2818F009A100E453C9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -209,6 +212,8 @@
 			children = (
 				18E819E318F03A8C00754406 /* Form.h */,
 				18E819E418F03A8C00754406 /* Form.m */,
+				182466A718F04769002CCF26 /* NameSheet.h */,
+				182466A818F04769002CCF26 /* NameSheet.m */,
 			);
 			name = Model;
 			path = aacalc/Model;
@@ -315,6 +320,7 @@
 				18293B3D18F009A100E453C9 /* ViewController.m in Sources */,
 				1866B18718F00AD100A17794 /* FMDatabasePool.m in Sources */,
 				18293B3718F009A100E453C9 /* AppDelegate.m in Sources */,
+				182466A918F04769002CCF26 /* NameSheet.m in Sources */,
 				18B04FE218F00D6C00D006BE /* SqlHelper.m in Sources */,
 				1866B18818F00AD100A17794 /* FMDatabaseQueue.m in Sources */,
 				18293B3318F009A100E453C9 /* main.m in Sources */,

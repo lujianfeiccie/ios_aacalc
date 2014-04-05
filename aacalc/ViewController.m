@@ -36,8 +36,14 @@
    // [dbmanager insertForm:info];
    // [dbmanager updateForm:info];
     [dbmanager deleteForm:info];
+    NameSheet *info2 = [[NameSheet alloc] init];
+//    info._id = @"1";
+//    info._name = @"wokao";
+//    info._form_id = @"1";
+//    [dbmanager updateNameSheet:info];
    
-    [dbmanager getlist];
+    [dbmanager getlistNameSheetByFormId:1];
+    //[dbmanager getlist];
    
     
 }
