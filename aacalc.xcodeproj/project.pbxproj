@@ -41,6 +41,8 @@
 		18ED4F7C18F19387002969C8 /* NameSheetDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ED4F7B18F19387002969C8 /* NameSheetDetail.m */; };
 		18ED4F7F18F19554002969C8 /* NameSheetViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ED4F7E18F19554002969C8 /* NameSheetViewCell.m */; };
 		18ED4F8118F19577002969C8 /* NameSheetViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18ED4F8018F19577002969C8 /* NameSheetViewCell.xib */; };
+		18ED4F8718F1AD9C002969C8 /* DataItemList.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ED4F8618F1AD9C002969C8 /* DataItemList.m */; };
+		18ED4F8A18F1B247002969C8 /* DataItemViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ED4F8918F1B247002969C8 /* DataItemViewCell.m */; };
 		18EF7E3118F1599700A6B77C /* PlatformUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EF7E3018F1599700A6B77C /* PlatformUtil.m */; };
 		18EF7E3418F15D4D00A6B77C /* NameSheetList.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EF7E3318F15D4D00A6B77C /* NameSheetList.m */; };
 /* End PBXBuildFile section */
@@ -112,6 +114,10 @@
 		18ED4F7D18F19554002969C8 /* NameSheetViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameSheetViewCell.h; sourceTree = "<group>"; };
 		18ED4F7E18F19554002969C8 /* NameSheetViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameSheetViewCell.m; sourceTree = "<group>"; };
 		18ED4F8018F19577002969C8 /* NameSheetViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameSheetViewCell.xib; sourceTree = "<group>"; };
+		18ED4F8518F1AD9C002969C8 /* DataItemList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataItemList.h; sourceTree = "<group>"; };
+		18ED4F8618F1AD9C002969C8 /* DataItemList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataItemList.m; sourceTree = "<group>"; };
+		18ED4F8818F1B247002969C8 /* DataItemViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataItemViewCell.h; sourceTree = "<group>"; };
+		18ED4F8918F1B247002969C8 /* DataItemViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataItemViewCell.m; sourceTree = "<group>"; };
 		18EF7E2F18F1599700A6B77C /* PlatformUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformUtil.h; sourceTree = "<group>"; };
 		18EF7E3018F1599700A6B77C /* PlatformUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlatformUtil.m; sourceTree = "<group>"; };
 		18EF7E3218F15D4D00A6B77C /* NameSheetList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameSheetList.h; sourceTree = "<group>"; };
@@ -236,6 +242,10 @@
 				18ED4F7D18F19554002969C8 /* NameSheetViewCell.h */,
 				18ED4F7E18F19554002969C8 /* NameSheetViewCell.m */,
 				18ED4F8018F19577002969C8 /* NameSheetViewCell.xib */,
+				18ED4F8518F1AD9C002969C8 /* DataItemList.h */,
+				18ED4F8618F1AD9C002969C8 /* DataItemList.m */,
+				18ED4F8818F1B247002969C8 /* DataItemViewCell.h */,
+				18ED4F8918F1B247002969C8 /* DataItemViewCell.m */,
 			);
 			name = UI;
 			path = aacalc/UI;
@@ -393,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18E819E218F0350C00754406 /* MyDBManager.m in Sources */,
+				18ED4F8718F1AD9C002969C8 /* DataItemList.m in Sources */,
 				18293B3D18F009A100E453C9 /* ViewController.m in Sources */,
 				1866B18718F00AD100A17794 /* FMDatabasePool.m in Sources */,
 				1863738B18F12509002C1DED /* FormDetail.m in Sources */,
@@ -408,6 +419,7 @@
 				1866B18818F00AD100A17794 /* FMDatabaseQueue.m in Sources */,
 				18293B3318F009A100E453C9 /* main.m in Sources */,
 				18ED4F7F18F19554002969C8 /* NameSheetViewCell.m in Sources */,
+				18ED4F8A18F1B247002969C8 /* DataItemViewCell.m in Sources */,
 				1866B18518F00AD100A17794 /* FMDatabase.m in Sources */,
 				1866B18918F00AD100A17794 /* FMResultSet.m in Sources */,
 				18ED4F7C18F19387002969C8 /* NameSheetDetail.m in Sources */,

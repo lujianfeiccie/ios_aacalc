@@ -1,36 +1,23 @@
 //
-//  NameSheetViewController.m
+//  DataItemList.m
 //  aacalc
 //
 //  Created by Apple on 14-4-6.
 //  Copyright (c) 2014年 Apple. All rights reserved.
 //
 
-#import "NameSheetList.h"
-#import "NSLogExt.h"
-#import "ButtonUtil.h"
-#import "NameSheetViewCell.h"
-#import "NameSheetDetail.h"
 #import "DataItemList.h"
-@interface NameSheetList ()
+#import "ButtonUtil.h"
+#import "DataItemViewCell.h"
+@interface DataItemList ()
 
 @end
 
-@implementation NameSheetList
-
--(void) setModel:(NSInteger) formid{
-    _formid = formid;
-}
--(void) toolBarAdd{
-    NSLogExt(@"toolBarAdd");
-    
-    UIViewController *next = [[self storyboard] instantiateViewControllerWithIdentifier:@"namesheet_detail"];
-    [((NameSheetDetail*)next) setModel:0 formId:_formid JumpToDo:Add];
-    [[app navController] pushViewController:next animated:YES];
-}
+@implementation DataItemList
 -(void) toolBarBack{
-    NSLogExt(@"toolBarBack");
     [[app navController] popViewControllerAnimated:YES];
+}
+-(void) toolBarFinish{
     
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -47,27 +34,16 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     app = [[UIApplication sharedApplication]delegate];
-    
-    self.navigationItem.title = @"参与名单";
-    
     self.navigationItem.leftBarButtonItem = [ButtonUtil createToolBarButton:@"返回" target:self action:@selector(toolBarBack)];
     
-    self.navigationItem.rightBarButtonItem = [ButtonUtil createToolBarButton:@"添加" target:self action:@selector(toolBarAdd)];
-    
-    _tableview.delegate = self;
-    _tableview.dataSource = self;
-   
-    
+    self.navigationItem.title = @"消费列表";
+     self.navigationItem.rightBarButtonItem = [ButtonUtil createToolBarButton:@"添加" target:self action:@selector(toolBarFinish)];
 }
--(void) viewDidAppear:(BOOL)animated{
+-(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    NSLogExt(@"viewDidAppear")
-    MyDBManager *dbmanager = [MyDBManager getInstance];
-    _datalist = [dbmanager getlistNameSheetByFormId:_formid];
     
-    [_tableview reloadData];
 }
--(void) viewDidLayoutSubviews{
+-(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     [_tableview setFrame:CGRectMake(0, 0,
                                     self.view.frame.size.width,
@@ -92,17 +68,17 @@
         [tableView registerNib:nib forCellReuseIdentifier:CustomCellIdentifier];
         nibsRegistered = YES;
     }
-    NameSheetViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:CustomCellIdentifier];
+    DataItemViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:CustomCellIdentifier];
     
     NSUInteger row = [indexPath row];
     
     NameSheet* nameSheet = [_datalist objectAtIndex:row];
     
     if (cell==nil) {
-        NSArray * nib = [[NSBundle mainBundle] loadNibNamed:@"NameSheetViewCell" owner:self options:nil] ;
+        NSArray * nib = [[NSBundle mainBundle] loadNibNamed:@"DataItemViewCell" owner:self options:nil] ;
         cell = [nib objectAtIndex:0];
     }
-    cell.sheetName = nameSheet._name;
+   // cell.sheetName = nameSheet._name;
     
     return cell;
 }
@@ -113,14 +89,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSUInteger row = [indexPath row];
-    NameSheet* nameSheet =  [_datalist objectAtIndex:row];
-    
-    
-    UIViewController *next = [[self storyboard] instantiateViewControllerWithIdentifier:@"dataitem_list"];
-//    [((NameSheetDetail*)next) setModel:nameSheet._id formId:_formid JumpToDo:Edit];
-    [[app navController] pushViewController:next animated:YES];
-    NSLogExt(@"didSelectRowAtIndexPath row=%i",row);
+//    NameSheet* nameSheet =  [_datalist objectAtIndex:row];
+//    
+//    
+//    UIViewController *next = [[self storyboard] instantiateViewControllerWithIdentifier:@"dataitem_list"];
+//    //    [((NameSheetDetail*)next) setModel:nameSheet._id formId:_formid JumpToDo:Edit];
+//    [[app navController] pushViewController:next animated:YES];
+//    NSLogExt(@"didSelectRowAtIndexPath row=%i",row);
 }
-
 
 @end

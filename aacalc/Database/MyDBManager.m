@@ -38,7 +38,7 @@ static MyDBManager *instance;
     NSLogExt(@"%@ result=%d",
                  TABLE_NAME_SHEET,result);
     
-    sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS  %@ (_id INTEGER PRIMARY KEY AUTOINCREMENT, _name VARCHAR, _note VARCHAR,_name_sheet_id INTEGER)",TABLE_DATA_ITEM];
+    sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS  %@ (_id INTEGER PRIMARY KEY AUTOINCREMENT, _cost INTEGER, _note VARCHAR,_name_sheet_id INTEGER)",TABLE_DATA_ITEM];
     result= [[sqlHelper getDatabase] executeUpdate:sql];
     NSLogExt(@"%@ result=%d",
                  TABLE_DATA_ITEM,result);
@@ -218,7 +218,7 @@ static MyDBManager *instance;
 - (bool) insertDataItem:(DataItem*) dataItem{
     
     bool result = NO;
-    NSString* sql =[NSString stringWithFormat:@"INSERT INTO %@(_name,_note,_name_sheet_id) VALUES('%@','%@',%i)",TABLE_DATA_ITEM,[dataItem _name],[dataItem _note],[dataItem _name_sheet_id]];
+    NSString* sql =[NSString stringWithFormat:@"INSERT INTO %@(_cost,_note,_name_sheet_id) VALUES(%i,'%@',%i)",TABLE_DATA_ITEM,[dataItem _cost],[dataItem _note],[dataItem _name_sheet_id]];
     result = [[sqlHelper getDatabase] executeUpdate:sql];
     
     NSLogExt(@"%@ result=%d sql=%@",dataItem.toString,result,sql);
@@ -244,7 +244,7 @@ static MyDBManager *instance;
 }
 - (bool) updateDataItem:(DataItem*) dataItem{
     bool result ;
-    NSString* sql =[NSString stringWithFormat:@"UPDATE %@ SET _name='%@',_note='%@' WHERE _id=%i",TABLE_DATA_ITEM,[dataItem _name],[dataItem _note],[dataItem _id]];
+    NSString* sql =[NSString stringWithFormat:@"UPDATE %@ SET _cost=%i,_note='%@' WHERE _id=%i",TABLE_DATA_ITEM,[dataItem _cost],[dataItem _note],[dataItem _id]];
     result =[[sqlHelper getDatabase] executeUpdate:sql];
     NSLogExt(@"%@ result=%d sql=%@",dataItem.toString,result,sql);
     return  result;
@@ -257,7 +257,7 @@ static MyDBManager *instance;
         // just print out what we've got in a number of formats.
         DataItem *obj = [[DataItem alloc]init];
         obj._id = [rs intForColumn:@"_id"];
-        obj._name = [rs stringForColumn:@"_name"];
+        obj._cost = [rs intForColumn:@"_cost"];
         obj._note = [rs stringForColumn:@"_note"];
         obj._name_sheet_id = [rs intForColumn:@"_name_sheet_id"];
         // [self MyLog:[NSString stringWithFormat:@"getlist=%@",obj.toString]];
@@ -275,7 +275,7 @@ static MyDBManager *instance;
         // just print out what we've got in a number of formats.
         DataItem *obj = [[DataItem alloc]init];
         obj._id = [rs intForColumn:@"_id"];
-        obj._name = [rs stringForColumn:@"_name"];
+        obj._cost = [rs intForColumn:@"_cost"];
         obj._note = [rs stringForColumn:@"_note"];
         obj._name_sheet_id = [rs intForColumn:@"_name_sheet_id"];
         // [self MyLog:[NSString stringWithFormat:@"getlist=%@",obj.toString]];

@@ -10,10 +10,10 @@
 
 @implementation DataItem
 @synthesize _id;
-@synthesize _name;
+@synthesize _cost;
 @synthesize _note;
 @synthesize _name_sheet_id;
 -(NSString*) toString{
-    return [NSString stringWithFormat:@"id=%i name=%@ _note=%@ _name_sheet_id=%i",_id,_name,_note,_name_sheet_id];
+    return [NSString stringWithFormat:@"id=%i cost=%i _note=%@ _name_sheet_id=%i",_id,_cost,_note,_name_sheet_id];
 }
 @end
