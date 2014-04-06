@@ -22,6 +22,9 @@
 		18293B4818F009A100E453C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18293B2A18F009A100E453C9 /* UIKit.framework */; };
 		18293B5018F009A100E453C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18293B4E18F009A100E453C9 /* InfoPlist.strings */; };
 		18293B5218F009A100E453C9 /* aacalcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18293B5118F009A100E453C9 /* aacalcTests.m */; };
+		1863738718F121A6002C1DED /* ButtonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863738618F121A6002C1DED /* ButtonUtil.m */; };
+		1863738B18F12509002C1DED /* FormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863738A18F12509002C1DED /* FormViewController.m */; };
+		1863738E18F12EF0002C1DED /* NSLogExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863738D18F12EF0002C1DED /* NSLogExt.m */; };
 		1866B18518F00AD100A17794 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866B17C18F00AD100A17794 /* FMDatabase.m */; };
 		1866B18618F00AD100A17794 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866B17E18F00AD100A17794 /* FMDatabaseAdditions.m */; };
 		1866B18718F00AD100A17794 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866B18018F00AD100A17794 /* FMDatabasePool.m */; };
@@ -66,6 +69,12 @@
 		18293B4D18F009A100E453C9 /* aacalcTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "aacalcTests-Info.plist"; sourceTree = "<group>"; };
 		18293B4F18F009A100E453C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		18293B5118F009A100E453C9 /* aacalcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = aacalcTests.m; sourceTree = "<group>"; };
+		1863738518F121A6002C1DED /* ButtonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonUtil.h; sourceTree = "<group>"; };
+		1863738618F121A6002C1DED /* ButtonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonUtil.m; sourceTree = "<group>"; };
+		1863738918F12509002C1DED /* FormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormViewController.h; sourceTree = "<group>"; };
+		1863738A18F12509002C1DED /* FormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormViewController.m; sourceTree = "<group>"; };
+		1863738C18F12EAF002C1DED /* NSLogExt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSLogExt.h; sourceTree = "<group>"; };
+		1863738D18F12EF0002C1DED /* NSLogExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSLogExt.m; sourceTree = "<group>"; };
 		1866B17B18F00AD100A17794 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		1866B17C18F00AD100A17794 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		1866B17D18F00AD100A17794 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -115,6 +124,8 @@
 		18293B1A18F0099D00E453C9 = {
 			isa = PBXGroup;
 			children = (
+				1863738818F124D2002C1DED /* UI */,
+				18A01FD618F105E60078E7AE /* Util */,
 				18B04FE318F00DFB00D006BE /* Model */,
 				1866B17A18F00AD100A17794 /* Database */,
 				18293B2C18F009A100E453C9 /* aacalc */,
@@ -188,6 +199,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		1863738818F124D2002C1DED /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1863738918F12509002C1DED /* FormViewController.h */,
+				1863738A18F12509002C1DED /* FormViewController.m */,
+			);
+			name = UI;
+			path = aacalc/UI;
+			sourceTree = "<group>";
+		};
 		1866B17A18F00AD100A17794 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +229,18 @@
 			);
 			name = Database;
 			path = aacalc/Database;
+			sourceTree = "<group>";
+		};
+		18A01FD618F105E60078E7AE /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				1863738518F121A6002C1DED /* ButtonUtil.h */,
+				1863738618F121A6002C1DED /* ButtonUtil.m */,
+				1863738C18F12EAF002C1DED /* NSLogExt.h */,
+				1863738D18F12EF0002C1DED /* NSLogExt.m */,
+			);
+			name = Util;
+			path = aacalc/Util;
 			sourceTree = "<group>";
 		};
 		18B04FE318F00DFB00D006BE /* Model */ = {
@@ -324,6 +357,8 @@
 				18E819E218F0350C00754406 /* MyDBManager.m in Sources */,
 				18293B3D18F009A100E453C9 /* ViewController.m in Sources */,
 				1866B18718F00AD100A17794 /* FMDatabasePool.m in Sources */,
+				1863738B18F12509002C1DED /* FormViewController.m in Sources */,
+				1863738718F121A6002C1DED /* ButtonUtil.m in Sources */,
 				18293B3718F009A100E453C9 /* AppDelegate.m in Sources */,
 				182466A918F04769002CCF26 /* NameSheet.m in Sources */,
 				18B04FE218F00D6C00D006BE /* SqlHelper.m in Sources */,
@@ -334,6 +369,7 @@
 				1866B18918F00AD100A17794 /* FMResultSet.m in Sources */,
 				18E819E518F03A8C00754406 /* Form.m in Sources */,
 				1866B18618F00AD100A17794 /* FMDatabaseAdditions.m in Sources */,
+				1863738E18F12EF0002C1DED /* NSLogExt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

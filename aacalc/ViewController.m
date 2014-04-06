@@ -9,28 +9,30 @@
 #import "ViewController.h"
 #import "SqlHelper.h"
 #import "MyDBManager.h"
+#import "ButtonUtil.h"
+#import "NSLogExt.h"
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
 
-- (void)timego{
-    [self MyLog:@"timego"];
+- (void)toolBarAdd{
+    NSLogExt(@"toolBarAdd");
+    UIViewController *next = [[self storyboard] instantiateViewControllerWithIdentifier:@"form_add_edit"];
+    [[app navController] pushViewController:next animated:YES];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        [self MyLog:@"viewDidLoad"];
+    NSLogExt(@"viewDidLoad");
+    
+    
 	// Do any additional setup after loading the view, typically from a nib.
-//   SqlHelper *sql = [SqlHelper getInstance];
-//    [sql createTables];
-//    [sql showAllTables];
-    
-  
-  
-   
-    
+    app = [[UIApplication sharedApplication] delegate];
+    //Add the tool bar button
+    self.navigationItem.rightBarButtonItem = [ButtonUtil createToolBarButton:@"添加" target:self action:@selector(toolBarAdd)];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,9 +41,4 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void) MyLog: (NSString*) msg{
-#if defined(LOG_DEBUG)
-    NSLog(@"%@ %@",NSStringFromClass([self class]),msg);
-#endif
-}
 @end

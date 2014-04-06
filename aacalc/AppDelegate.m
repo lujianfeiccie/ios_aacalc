@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "NSLogExt.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -19,7 +20,8 @@
     
     
     //[self MyLog:[NSString stringWithFormat:@"%f",[[[UIDevice currentDevice] systemVersion] floatValue]]];
-    [self MyLog:[NSString stringWithFormat:@"%f",IOS_VERSION]];
+    NSLogExt(@"%f",IOS_VERSION);
+
     ViewController *rootView =  [storyBoard instantiateViewControllerWithIdentifier:@"rootview"];
     self.navController = [[UINavigationController alloc] init];
     [self.navController pushViewController:rootView animated:YES];
@@ -64,9 +66,5 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
--(void) MyLog: (NSString*) msg{
-#if defined(LOG_DEBUG)
-    NSLog(@"%@ %@",NSStringFromClass([self class]),msg);
-#endif
-}
+
 @end

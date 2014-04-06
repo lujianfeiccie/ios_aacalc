@@ -7,7 +7,7 @@
 //
 
 #import "SqlHelper.h"
-
+#import "NSLogExt.h"
 
 @implementation SqlHelper
 
@@ -15,7 +15,7 @@ static SqlHelper *instance;
 
 
 - (id) init{
-    [self MyLog:@"init"];
+    NSLogExt(@"init");
     isOpen = NO;
     return self;
 }
@@ -23,9 +23,9 @@ static SqlHelper *instance;
     if (isOpen) {
         return YES;
     }
-     [self MyLog:@"open"];
+    NSLogExt(@"open");
     if (![db open]) {
-        [self MyLog:@"Could not open db."];
+        NSLogExt(@"Could not open db.");
         return NO;
     }
     isOpen = YES;
@@ -36,10 +36,10 @@ static SqlHelper *instance;
 {
     if(isOpen){
      if (![db close]) {
-        [self MyLog:@"Could not close db."];
+         NSLogExt(@"Could not close db.");
         return  NO;
      }
-    [self MyLog:@"Close"];
+        NSLogExt(@"Close");
     }
     isOpen = NO;
     return YES;
@@ -49,7 +49,7 @@ static SqlHelper *instance;
 {
    
     if (db==nil) {
-         [self MyLog:@"getDatabase"];
+        NSLogExt(@"getDatabase");
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentDirectory = [paths objectAtIndex:0];
         //dbPath： 数据库路径，在Document中。
@@ -72,20 +72,15 @@ static SqlHelper *instance;
 }
 
 -(void) showAllTables{
-    [self MyLog:@"showAllTables"];
+    NSLogExt(@"showAllTables");
     FMDatabase *db = [self getDatabase];
    FMResultSet *rs = [db executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;"];
     
     while ([rs next]) {
-       [self MyLog:[rs stringForColumn:@"name"]];
+        NSLogExt([rs stringForColumn:@"name"]);
     }
 
     [rs close];
 }
 
--(void) MyLog: (NSString*) msg{
-#if defined(LOG_DEBUG)
-    NSLog(@"%@ %@",NSStringFromClass([self class]),msg);
-#endif
-}
 @end
