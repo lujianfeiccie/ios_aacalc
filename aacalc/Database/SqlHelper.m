@@ -11,7 +11,7 @@
 
 @implementation SqlHelper
 
-static SqlHelper *instance;
+static SqlHelper *instance = nil;
 
 
 - (id) init{

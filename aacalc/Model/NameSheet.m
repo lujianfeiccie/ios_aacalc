@@ -13,6 +13,6 @@
 @synthesize _name;
 @synthesize _form_id;
 -(NSString*) toString{
-    return [NSString stringWithFormat:@"id=%@ name=%@ formid=%@",_id,_name,_form_id];
+    return [NSString stringWithFormat:@"id=%i name=%@ formid=%i",_id,_name,_form_id];
 }
 @end

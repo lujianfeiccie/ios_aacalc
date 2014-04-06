@@ -10,15 +10,15 @@
 
 @interface DataItem : NSObject
 {
-    NSString* _id;
+    NSInteger _id;
     NSString* _name;
     NSString* _note;
-    NSString* _name_sheet_id;
+    NSInteger _name_sheet_id;
 }
-@property (nonatomic, retain) NSString *_id;
+@property NSInteger _id;
 @property (nonatomic, retain) NSString *_name;
 @property (nonatomic, retain) NSString *_note;
-@property (nonatomic, retain) NSString *_name_sheet_id;
+@property NSInteger _name_sheet_id;
 -(NSString*) toString;
 
 @end

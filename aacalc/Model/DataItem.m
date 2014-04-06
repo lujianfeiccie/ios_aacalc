@@ -14,6 +14,6 @@
 @synthesize _note;
 @synthesize _name_sheet_id;
 -(NSString*) toString{
-    return [NSString stringWithFormat:@"id=%@ name=%@ _note=%@ _name_sheet_id=%@",_id,_name,_note,_name_sheet_id];
+    return [NSString stringWithFormat:@"id=%i name=%@ _note=%@ _name_sheet_id=%i",_id,_name,_note,_name_sheet_id];
 }
 @end

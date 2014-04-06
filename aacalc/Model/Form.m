@@ -12,6 +12,6 @@
 @synthesize _id;
 @synthesize _name;
 -(NSString*) toString{
-    return [NSString stringWithFormat:@"id=%@ name=%@",_id,_name];
+    return [NSString stringWithFormat:@"id=%i name=%@",_id,_name];
 }
 @end

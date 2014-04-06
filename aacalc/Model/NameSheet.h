@@ -10,12 +10,12 @@
 
 @interface NameSheet : NSObject
 {
-    NSString* _id;
+    NSInteger _id;
     NSString* _name;
-    NSString* _form_id;
+    NSInteger _form_id;
 }
-@property (nonatomic, retain) NSString *_id;
-@property (nonatomic, retain) NSString *_name;
-@property (nonatomic, retain) NSString *_form_id;
+@property NSInteger _id;
+@property NSString *_name;
+@property NSInteger _form_id;
 -(NSString*) toString;
 @end

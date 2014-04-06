@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MyDBManager.h"
-#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
-#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+
+typedef enum{
+    Add,
+    Edit
+}JumpType;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {

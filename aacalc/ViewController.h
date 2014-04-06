@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UITableViewDelegate,
+UITableViewDataSource>
 {
     AppDelegate *app;
+    __weak IBOutlet UITableView *_tableview;
+    NSMutableArray* _datalist;
 }
 - (void)toolBarAdd;
 @end

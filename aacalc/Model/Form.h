@@ -10,10 +10,10 @@
 
 @interface Form : NSObject
 {
-    NSString* _id;
+    NSInteger _id;
     NSString* _name;
 }
-@property (nonatomic, retain) NSString *_id;
+@property NSInteger _id;
 @property (nonatomic, retain) NSString *_name;
 -(NSString*) toString;
 @end

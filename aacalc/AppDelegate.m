@@ -20,8 +20,7 @@
     
     
     //[self MyLog:[NSString stringWithFormat:@"%f",[[[UIDevice currentDevice] systemVersion] floatValue]]];
-    NSLogExt(@"%f",IOS_VERSION);
-
+   
     ViewController *rootView =  [storyBoard instantiateViewControllerWithIdentifier:@"rootview"];
     self.navController = [[UINavigationController alloc] init];
     [self.navController pushViewController:rootView animated:YES];

@@ -23,8 +23,11 @@
 		18293B5018F009A100E453C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18293B4E18F009A100E453C9 /* InfoPlist.strings */; };
 		18293B5218F009A100E453C9 /* aacalcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18293B5118F009A100E453C9 /* aacalcTests.m */; };
 		1863738718F121A6002C1DED /* ButtonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863738618F121A6002C1DED /* ButtonUtil.m */; };
-		1863738B18F12509002C1DED /* FormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863738A18F12509002C1DED /* FormViewController.m */; };
+		1863738B18F12509002C1DED /* FormDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863738A18F12509002C1DED /* FormDetail.m */; };
 		1863738E18F12EF0002C1DED /* NSLogExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863738D18F12EF0002C1DED /* NSLogExt.m */; };
+		1863739118F13B4C002C1DED /* DialogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863739018F13B4C002C1DED /* DialogUtil.m */; };
+		1863739718F142E7002C1DED /* FormTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863739618F142E7002C1DED /* FormTableViewCell.m */; };
+		1863739918F14313002C1DED /* FormTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1863739818F14313002C1DED /* FormTableViewCell.xib */; };
 		1866B18518F00AD100A17794 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866B17C18F00AD100A17794 /* FMDatabase.m */; };
 		1866B18618F00AD100A17794 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866B17E18F00AD100A17794 /* FMDatabaseAdditions.m */; };
 		1866B18718F00AD100A17794 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866B18018F00AD100A17794 /* FMDatabasePool.m */; };
@@ -35,6 +38,11 @@
 		18B04FE218F00D6C00D006BE /* SqlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B04FE118F00D6C00D006BE /* SqlHelper.m */; };
 		18E819E218F0350C00754406 /* MyDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E819E118F0350C00754406 /* MyDBManager.m */; };
 		18E819E518F03A8C00754406 /* Form.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E819E418F03A8C00754406 /* Form.m */; };
+		18ED4F7C18F19387002969C8 /* NameSheetDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ED4F7B18F19387002969C8 /* NameSheetDetail.m */; };
+		18ED4F7F18F19554002969C8 /* NameSheetViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ED4F7E18F19554002969C8 /* NameSheetViewCell.m */; };
+		18ED4F8118F19577002969C8 /* NameSheetViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18ED4F8018F19577002969C8 /* NameSheetViewCell.xib */; };
+		18EF7E3118F1599700A6B77C /* PlatformUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EF7E3018F1599700A6B77C /* PlatformUtil.m */; };
+		18EF7E3418F15D4D00A6B77C /* NameSheetList.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EF7E3318F15D4D00A6B77C /* NameSheetList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,10 +79,15 @@
 		18293B5118F009A100E453C9 /* aacalcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = aacalcTests.m; sourceTree = "<group>"; };
 		1863738518F121A6002C1DED /* ButtonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonUtil.h; sourceTree = "<group>"; };
 		1863738618F121A6002C1DED /* ButtonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonUtil.m; sourceTree = "<group>"; };
-		1863738918F12509002C1DED /* FormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormViewController.h; sourceTree = "<group>"; };
-		1863738A18F12509002C1DED /* FormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormViewController.m; sourceTree = "<group>"; };
+		1863738918F12509002C1DED /* FormDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormDetail.h; sourceTree = "<group>"; };
+		1863738A18F12509002C1DED /* FormDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormDetail.m; sourceTree = "<group>"; };
 		1863738C18F12EAF002C1DED /* NSLogExt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSLogExt.h; sourceTree = "<group>"; };
 		1863738D18F12EF0002C1DED /* NSLogExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSLogExt.m; sourceTree = "<group>"; };
+		1863738F18F13B4C002C1DED /* DialogUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogUtil.h; sourceTree = "<group>"; };
+		1863739018F13B4C002C1DED /* DialogUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogUtil.m; sourceTree = "<group>"; };
+		1863739518F142E7002C1DED /* FormTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormTableViewCell.h; sourceTree = "<group>"; };
+		1863739618F142E7002C1DED /* FormTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormTableViewCell.m; sourceTree = "<group>"; };
+		1863739818F14313002C1DED /* FormTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FormTableViewCell.xib; sourceTree = "<group>"; };
 		1866B17B18F00AD100A17794 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		1866B17C18F00AD100A17794 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		1866B17D18F00AD100A17794 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -94,6 +107,15 @@
 		18E819E118F0350C00754406 /* MyDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDBManager.m; sourceTree = "<group>"; };
 		18E819E318F03A8C00754406 /* Form.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Form.h; sourceTree = "<group>"; };
 		18E819E418F03A8C00754406 /* Form.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Form.m; sourceTree = "<group>"; };
+		18ED4F7A18F19387002969C8 /* NameSheetDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameSheetDetail.h; sourceTree = "<group>"; };
+		18ED4F7B18F19387002969C8 /* NameSheetDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameSheetDetail.m; sourceTree = "<group>"; };
+		18ED4F7D18F19554002969C8 /* NameSheetViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameSheetViewCell.h; sourceTree = "<group>"; };
+		18ED4F7E18F19554002969C8 /* NameSheetViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameSheetViewCell.m; sourceTree = "<group>"; };
+		18ED4F8018F19577002969C8 /* NameSheetViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameSheetViewCell.xib; sourceTree = "<group>"; };
+		18EF7E2F18F1599700A6B77C /* PlatformUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformUtil.h; sourceTree = "<group>"; };
+		18EF7E3018F1599700A6B77C /* PlatformUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlatformUtil.m; sourceTree = "<group>"; };
+		18EF7E3218F15D4D00A6B77C /* NameSheetList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameSheetList.h; sourceTree = "<group>"; };
+		18EF7E3318F15D4D00A6B77C /* NameSheetList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameSheetList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,8 +224,18 @@
 		1863738818F124D2002C1DED /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				1863738918F12509002C1DED /* FormViewController.h */,
-				1863738A18F12509002C1DED /* FormViewController.m */,
+				1863738918F12509002C1DED /* FormDetail.h */,
+				1863738A18F12509002C1DED /* FormDetail.m */,
+				1863739518F142E7002C1DED /* FormTableViewCell.h */,
+				1863739618F142E7002C1DED /* FormTableViewCell.m */,
+				1863739818F14313002C1DED /* FormTableViewCell.xib */,
+				18EF7E3218F15D4D00A6B77C /* NameSheetList.h */,
+				18EF7E3318F15D4D00A6B77C /* NameSheetList.m */,
+				18ED4F7A18F19387002969C8 /* NameSheetDetail.h */,
+				18ED4F7B18F19387002969C8 /* NameSheetDetail.m */,
+				18ED4F7D18F19554002969C8 /* NameSheetViewCell.h */,
+				18ED4F7E18F19554002969C8 /* NameSheetViewCell.m */,
+				18ED4F8018F19577002969C8 /* NameSheetViewCell.xib */,
 			);
 			name = UI;
 			path = aacalc/UI;
@@ -238,6 +270,10 @@
 				1863738618F121A6002C1DED /* ButtonUtil.m */,
 				1863738C18F12EAF002C1DED /* NSLogExt.h */,
 				1863738D18F12EF0002C1DED /* NSLogExt.m */,
+				1863738F18F13B4C002C1DED /* DialogUtil.h */,
+				1863739018F13B4C002C1DED /* DialogUtil.m */,
+				18EF7E2F18F1599700A6B77C /* PlatformUtil.h */,
+				18EF7E3018F1599700A6B77C /* PlatformUtil.m */,
 			);
 			name = Util;
 			path = aacalc/Util;
@@ -334,6 +370,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				18293B3F18F009A100E453C9 /* Images.xcassets in Resources */,
+				1863739918F14313002C1DED /* FormTableViewCell.xib in Resources */,
+				18ED4F8118F19577002969C8 /* NameSheetViewCell.xib in Resources */,
 				18293B3118F009A100E453C9 /* InfoPlist.strings in Resources */,
 				18293B3A18F009A100E453C9 /* Main.storyboard in Resources */,
 			);
@@ -357,16 +395,22 @@
 				18E819E218F0350C00754406 /* MyDBManager.m in Sources */,
 				18293B3D18F009A100E453C9 /* ViewController.m in Sources */,
 				1866B18718F00AD100A17794 /* FMDatabasePool.m in Sources */,
-				1863738B18F12509002C1DED /* FormViewController.m in Sources */,
+				1863738B18F12509002C1DED /* FormDetail.m in Sources */,
+				18EF7E3118F1599700A6B77C /* PlatformUtil.m in Sources */,
+				18EF7E3418F15D4D00A6B77C /* NameSheetList.m in Sources */,
+				1863739118F13B4C002C1DED /* DialogUtil.m in Sources */,
 				1863738718F121A6002C1DED /* ButtonUtil.m in Sources */,
 				18293B3718F009A100E453C9 /* AppDelegate.m in Sources */,
+				1863739718F142E7002C1DED /* FormTableViewCell.m in Sources */,
 				182466A918F04769002CCF26 /* NameSheet.m in Sources */,
 				18B04FE218F00D6C00D006BE /* SqlHelper.m in Sources */,
 				18A01FD518F0F6310078E7AE /* DataItem.m in Sources */,
 				1866B18818F00AD100A17794 /* FMDatabaseQueue.m in Sources */,
 				18293B3318F009A100E453C9 /* main.m in Sources */,
+				18ED4F7F18F19554002969C8 /* NameSheetViewCell.m in Sources */,
 				1866B18518F00AD100A17794 /* FMDatabase.m in Sources */,
 				1866B18918F00AD100A17794 /* FMResultSet.m in Sources */,
+				18ED4F7C18F19387002969C8 /* NameSheetDetail.m in Sources */,
 				18E819E518F03A8C00754406 /* Form.m in Sources */,
 				1866B18618F00AD100A17794 /* FMDatabaseAdditions.m in Sources */,
 				1863738E18F12EF0002C1DED /* NSLogExt.m in Sources */,
@@ -452,7 +496,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -485,7 +529,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -500,6 +544,7 @@
 				GCC_PREFIX_HEADER = "aacalc/aacalc-Prefix.pch";
 				INFOPLIST_FILE = "aacalc/aacalc-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -513,6 +558,7 @@
 				GCC_PREFIX_HEADER = "aacalc/aacalc-Prefix.pch";
 				INFOPLIST_FILE = "aacalc/aacalc-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
