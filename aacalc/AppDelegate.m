@@ -7,12 +7,34 @@
 //
 
 #import "AppDelegate.h"
-
+#import "ViewController.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    storyBoard=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    
+    //[self MyLog:[NSString stringWithFormat:@"%f",[[[UIDevice currentDevice] systemVersion] floatValue]]];
+    [self MyLog:[NSString stringWithFormat:@"%f",IOS_VERSION]];
+    ViewController *rootView =  [storyBoard instantiateViewControllerWithIdentifier:@"rootview"];
+    self.navController = [[UINavigationController alloc] init];
+    [self.navController pushViewController:rootView animated:YES];
+    [self.navController setToolbarHidden:YES];//底部隐藏
+    // [self.navController setNavigationBarHidden:NO];//顶部 隐藏
+    // self.navController.navigationBar.backgroundColor = [OtherTool //hexStringToColor:@"#000000"];
+    //[[self.navController.navigationBar] setBackgroundImage:[UIImage //imageNamed:@"small_circle.png"]];
+    //[self.navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"title_bar.png"] forBarMetrics:UIBarMetricsDefault];
+    [self.window addSubview:self.navController.view];
+    [self.window makeKeyAndVisible];
+    
+    
+    ///Create database and create tables
+     dbmanager = [MyDBManager getInstance];
+    [dbmanager createTables];
     return YES;
 }
 							
@@ -42,5 +64,9 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
+-(void) MyLog: (NSString*) msg{
+#if defined(LOG_DEBUG)
+    NSLog(@"%@ %@",NSStringFromClass([self class]),msg);
+#endif
+}
 @end

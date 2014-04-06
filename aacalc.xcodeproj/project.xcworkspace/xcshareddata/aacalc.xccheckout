@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D1550D94-BEA7-4186-8400-62031A0B1625</string>
+	<key>IDESourceControlProjectName</key>
+	<string>aacalc</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C21DDD5D-D711-44EB-B9D5-891585F43F1E</key>
+		<string>https://github.com/lujianfeiccie/ios_aacalc.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>aacalc.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C21DDD5D-D711-44EB-B9D5-891585F43F1E</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/lujianfeiccie/ios_aacalc.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C21DDD5D-D711-44EB-B9D5-891585F43F1E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C21DDD5D-D711-44EB-B9D5-891585F43F1E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>aacalc</string>
+		</dict>
+	</array>
+</dict>
+</plist>

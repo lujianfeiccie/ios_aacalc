@@ -10,6 +10,7 @@
 #import "SqlHelper.h"
 #import "Form.h"
 #import "NameSheet.h"
+#import "DataItem.h"
 #define TABLE_FORM (@"TB_FORM")  //Form
 #define TABLE_NAME_SHEET (@"TB_NAME_SHEET")  //Name sheet
 #define TABLE_DATA_ITEM (@"TB_DATA_ITEM")  //Data item
@@ -38,11 +39,11 @@
 //////////////////////////////////////////////////
 
 ///////////////Data Item///////////////////////////////
-- (bool) insertDataItem:(NameSheet*) nameSheet;
-- (bool) deleteDataItem:(NameSheet*) nameSheet;
-- (bool) deleteDataItemByNameSheet:(Form*) form;
-- (bool) updateDataItem:(NameSheet*) nameSheet;
-- (NSMutableArray*) getlistDataItemByNameSheet:(Form*) form;
-- (NSMutableArray*) getlistDataItemByNameSheetId:(NSInteger) form_id;
+- (bool) insertDataItem:(DataItem*) dataItem;
+- (bool) deleteDataItem:(DataItem*) dataItem;
+- (bool) deleteDataItemByNameSheet:(NameSheet*) nameSheet;
+- (bool) updateDataItem:(DataItem*) dataItem;
+- (NSMutableArray*) getlistDataItemByNameSheet:(NameSheet*) nameSheet;
+- (NSMutableArray*) getlistDataItemByNameSheetId:(NSInteger) nameSheet_id;
 //////////////////////////////////////////////////
 @end

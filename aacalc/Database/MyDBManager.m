@@ -37,6 +37,13 @@ static MyDBManager *instance;
     result= [[sqlHelper getDatabase] executeUpdate:sql];
     [self MyLog:[NSString stringWithFormat:@"createTable %@ result=%d",
                  TABLE_NAME_SHEET,result]];
+    
+    sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS  %@ (_id INTEGER PRIMARY KEY AUTOINCREMENT, _name VARCHAR, _note VARCHAR,_name_sheet_id INTEGER)",TABLE_DATA_ITEM];
+    result= [[sqlHelper getDatabase] executeUpdate:sql];
+    [self MyLog:[NSString stringWithFormat:@"createTable %@ result=%d",
+                 TABLE_DATA_ITEM,result]];
+
+    
     return result;
 }
 
@@ -123,7 +130,7 @@ static MyDBManager *instance;
     while ([rs next]) {
         // just print out what we've got in a number of formats.
         
-        NameSheet *obj = [[Form alloc]init];
+        NameSheet *obj = [[NameSheet alloc]init];
         obj._id = [NSString stringWithFormat:@"%d",[rs intForColumn:@"_id"]];
         obj._name = [rs stringForColumn:@"_name"];
         obj._form_id = [rs stringForColumn:@"_form_id"];
@@ -153,6 +160,74 @@ static MyDBManager *instance;
 }
 /////////////////////////////////////////////////////////
 
+///////////////Data Item///////////////////////////////
+- (bool) insertDataItem:(DataItem*) dataItem{
+    
+    bool result = NO;
+    
+    result = [[sqlHelper getDatabase] executeUpdate:[NSString stringWithFormat:@"INSERT INTO %@(_name,_note,_name_sheet_id) VALUES(?,?,?)",TABLE_DATA_ITEM],[dataItem _name],[dataItem _note],[dataItem _name_sheet_id]];
+    
+    [self MyLog:[NSString stringWithFormat:@"insertDataItem %@ result=%d",dataItem.toString,result]];
+    
+    return  result;
+}
+- (bool) deleteDataItem:(DataItem*) dataItem{
+    bool result ;
+    result =[[sqlHelper getDatabase] executeUpdate:[NSString stringWithFormat:@"DELETE FROM  %@ WHERE _id=?",TABLE_DATA_ITEM],[dataItem _id]];
+    [self MyLog:[NSString stringWithFormat:@"deleteDataItem %@ result=%d",dataItem.toString,result]];
+    return result;
+}
+- (bool) deleteDataItemByNameSheet:(NameSheet*) nameSheet{
+    bool result ;
+    result =[[sqlHelper getDatabase] executeUpdate:[NSString stringWithFormat:@"DELETE FROM  %@ WHERE _name_sheet_id=?",TABLE_DATA_ITEM],[nameSheet _id]];
+    [self MyLog:[NSString stringWithFormat:@"deleteDataItemByNameSheet %@ result=%d",nameSheet.toString,result]];
+    return result;
+
+}
+- (bool) updateDataItem:(DataItem*) dataItem{
+    bool result ;
+    result =[[sqlHelper getDatabase] executeUpdate:[NSString stringWithFormat:@"UPDATE %@ SET _name=?,_note=? WHERE _id=?",TABLE_DATA_ITEM],[dataItem _name],[dataItem _note],[dataItem _id]];
+    [self MyLog:[NSString stringWithFormat:@"updateDataItem %@ result=%d",dataItem.toString,result]];
+    
+    return  result;
+}
+- (NSMutableArray*) getlistDataItemByNameSheet:(NameSheet*) nameSheet{
+    NSMutableArray *list = [[NSMutableArray alloc] init];
+    FMResultSet *rs = [[sqlHelper getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _name_sheet_id = %@",
+                                                             TABLE_DATA_ITEM,[nameSheet _id]]];
+    while ([rs next]) {
+        // just print out what we've got in a number of formats.
+        DataItem *obj = [[DataItem alloc]init];
+        obj._id = [NSString stringWithFormat:@"%d",[rs intForColumn:@"_id"]];
+        obj._name = [rs stringForColumn:@"_name"];
+        obj._note = [rs stringForColumn:@"_note"];
+        obj._name_sheet_id = [rs stringForColumn:@"_name_sheet_id"];
+        // [self MyLog:[NSString stringWithFormat:@"getlist=%@",obj.toString]];
+        [list addObject:obj];
+    }
+    [rs close];
+    return list;
+
+}
+- (NSMutableArray*) getlistDataItemByNameSheetId:(NSInteger) nameSheet_id{
+    NSMutableArray *list = [[NSMutableArray alloc] init];
+    FMResultSet *rs = [[sqlHelper getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _name_sheet_id = %i",
+                                                             TABLE_DATA_ITEM,nameSheet_id]];
+    while ([rs next]) {
+        // just print out what we've got in a number of formats.
+        DataItem *obj = [[DataItem alloc]init];
+        obj._id = [NSString stringWithFormat:@"%d",[rs intForColumn:@"_id"]];
+        obj._name = [rs stringForColumn:@"_name"];
+        obj._note = [rs stringForColumn:@"_note"];
+        obj._name_sheet_id = [rs stringForColumn:@"_name_sheet_id"];
+        // [self MyLog:[NSString stringWithFormat:@"getlist=%@",obj.toString]];
+        [list addObject:obj];
+    }
+    [rs close];
+    return list;
+
+}
+//////////////////////////////////////////////////
 -(void) MyLog: (NSString*) msg{
 #if defined(LOG_DEBUG)
     NSLog(@"%@ %@",NSStringFromClass([self class]),msg);
