@@ -12,7 +12,17 @@
 @synthesize _id;
 @synthesize _name;
 @synthesize _form_id;
+@synthesize _total;
+@synthesize _result;
+-(id)init{
+    _name = @"";
+    _total = 0;
+    _form_id = 0;
+    _id = 0;
+    _result = 0;
+    return  self;
+}
 -(NSString*) toString{
-    return [NSString stringWithFormat:@"id=%i name=%@ formid=%i",_id,_name,_form_id];
+    return [NSString stringWithFormat:@"id=%i name=%@ total=%.1lf formid=%i result=%.1lf",_id,_name,_total,_form_id,_result];
 }
 @end

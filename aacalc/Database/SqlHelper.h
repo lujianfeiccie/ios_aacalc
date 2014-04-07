@@ -9,11 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "FMDatabase.h"
 #define DB_NAME (@"user_info.db")
-
-#define LOG_DEBUG
+#define DB_OEPN_INTERVAL 10
 @interface SqlHelper : NSObject
 {
-     FMDatabase *db;
+    FMDatabase *db;
     BOOL isOpen;
 }
 - (BOOL) open;

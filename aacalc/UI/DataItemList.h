@@ -16,6 +16,7 @@ UITableViewDataSource>
     NSInteger _nameSheetId;
     NSMutableArray* _datalist;
 }
+-(void) setModel: (NSInteger) nameSheetId;
 -(void) toolBarBack;
--(void) toolBarFinish;
+-(void) toolBarAdd;
 @end

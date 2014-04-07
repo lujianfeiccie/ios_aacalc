@@ -10,5 +10,10 @@
 
 @interface NameSheetViewCell : UITableViewCell
 @property(retain,nonatomic) IBOutlet UILabel* _lblSheetName;
+@property(retain,nonatomic) IBOutlet UILabel* _lblSheetTotal;
+@property(retain,nonatomic) IBOutlet UIButton* _btnEdit;
+@property(retain,nonatomic) IBOutlet UILabel* _lblSheetResult;
 @property(copy,nonatomic) NSString* sheetName;
+@property(nonatomic) double sheetTotal;
+@property(nonatomic) double sheetResult;
 @end

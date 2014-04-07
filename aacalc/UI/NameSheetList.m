@@ -12,6 +12,7 @@
 #import "NameSheetViewCell.h"
 #import "NameSheetDetail.h"
 #import "DataItemList.h"
+#import "Form.h"
 @interface NameSheetList ()
 
 @end
@@ -48,7 +49,11 @@
 	// Do any additional setup after loading the view.
     app = [[UIApplication sharedApplication]delegate];
     
-    self.navigationItem.title = @"参与名单";
+    MyDBManager *dbmanager = [MyDBManager getInstance];
+    Form* form = [dbmanager getFormById:_formid];
+    NSString* title = [NSString stringWithFormat:@"%@名单",form._name];
+    
+    self.navigationItem.title =title;
     
     self.navigationItem.leftBarButtonItem = [ButtonUtil createToolBarButton:@"返回" target:self action:@selector(toolBarBack)];
     
@@ -64,7 +69,7 @@
     NSLogExt(@"viewDidAppear")
     MyDBManager *dbmanager = [MyDBManager getInstance];
     _datalist = [dbmanager getlistNameSheetByFormId:_formid];
-    
+   
     [_tableview reloadData];
 }
 -(void) viewDidLayoutSubviews{
@@ -103,12 +108,27 @@
         cell = [nib objectAtIndex:0];
     }
     cell.sheetName = nameSheet._name;
-    
+    cell.sheetTotal = nameSheet._total;
+    [cell._btnEdit addTarget:self action:@selector(ActionEdit:event:) forControlEvents:UIControlEventTouchUpInside];
+    cell.sheetResult = nameSheet._result;
     return cell;
 }
-
+-(IBAction)ActionEdit:(UIControl *)sender event:(id)event{
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchPos = [touch locationInView:_tableview];
+    NSIndexPath *indexPath = [_tableview indexPathForRowAtPoint:touchPos];
+    if(indexPath != nil){
+        //Todo: get model at indexPath, update cell or something other
+        NSUInteger row =[indexPath row];
+        NameSheet* nameSheet = [_datalist objectAtIndex:row];
+        
+        UIViewController *next = [[self storyboard] instantiateViewControllerWithIdentifier:@"namesheet_detail"];
+        [((NameSheetDetail*)next) setModel:nameSheet._id formId:_formid JumpToDo:Edit];
+        [[app navController] pushViewController:next animated:YES];
+    }
+}
 -(GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50;
+    return 80;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -117,8 +137,8 @@
     
     
     UIViewController *next = [[self storyboard] instantiateViewControllerWithIdentifier:@"dataitem_list"];
-//    [((NameSheetDetail*)next) setModel:nameSheet._id formId:_formid JumpToDo:Edit];
-    [[app navController] pushViewController:next animated:YES];
+    [((DataItemList*)next) setModel:[nameSheet _id]];
+     [[app navController] pushViewController:next animated:YES];
     NSLogExt(@"didSelectRowAtIndexPath row=%i",row);
 }
 

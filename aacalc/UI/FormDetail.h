@@ -14,8 +14,10 @@
     __weak IBOutlet UITextField *_txtFormName;
     NSInteger _form_id;
     JumpType _jumpType;
+    __weak IBOutlet UIButton *_btnDelete;
 }
 -(void) setModel: (NSInteger) form_id JumpToDo :(JumpType) jumpType;
 -(void) toolBarBack;
 -(void) toolBarFinish;
+- (IBAction)ActionDelete:(id)sender;
 @end

@@ -15,5 +15,6 @@ UITableViewDataSource>
     __weak IBOutlet UITableView *_tableview;
     NSMutableArray* _datalist;
 }
+-(IBAction)ActionEdit:(UIControl *)sender event:(id)event;
 - (void)toolBarAdd;
 @end

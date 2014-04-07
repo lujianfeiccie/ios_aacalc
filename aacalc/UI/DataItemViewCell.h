@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface DataItemViewCell : UITableViewCell
-
+@property (retain,nonatomic) IBOutlet UILabel* _txtCost;
+@property (retain,nonatomic) IBOutlet UILabel* _txtNote;
+@property (nonatomic) double cost;
+@property (copy,nonatomic) NSString* note;
 @end

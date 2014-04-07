@@ -29,7 +29,7 @@ static SqlHelper *instance = nil;
         return NO;
     }
     isOpen = YES;
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(close) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:DB_OEPN_INTERVAL target:self selector:@selector(close) userInfo:nil repeats:NO];
     return YES;
 }
 - (BOOL) close

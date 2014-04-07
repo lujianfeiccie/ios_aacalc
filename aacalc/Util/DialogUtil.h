@@ -10,4 +10,6 @@
 
 @interface DialogUtil : NSObject
 +(void) createAlertDialog: (NSString *)title message:(NSString *)message delegate:(id /*<UIAlertViewDelegate>*/)delegate;
++(void) createDeleteAlertDialog: (NSString *)title message:(NSString *)message delegate:(id /*<UIAlertViewDelegate>*/)delegate;
+
 @end

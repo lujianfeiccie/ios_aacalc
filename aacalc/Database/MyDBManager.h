@@ -36,19 +36,24 @@
 - (bool) deleteNameSheet:(NameSheet*) nameSheet;
 - (bool) deleteNameSheetByForm:(Form*) form;
 - (bool) deleteNameSheetByFormId:(NSInteger) form_id;
+- (bool) deleteNameSheetById:(NSInteger) id;
 - (bool) updateNameSheet:(NameSheet*) nameSheet;
 - (NSMutableArray*) getlistNameSheetByForm:(Form*) form;
 - (NSMutableArray*) getlistNameSheetByFormId:(NSInteger) form_id;
 - (NameSheet*) getNameSheetById:(NSInteger) id;
+- (NSMutableArray*) getlistNameSheet;
 //////////////////////////////////////////////////
 
 ///////////////Data Item///////////////////////////////
 - (bool) insertDataItem:(DataItem*) dataItem;
 - (bool) deleteDataItem:(DataItem*) dataItem;
+- (bool) deleteDataItemById:(NSInteger) id;
 - (bool) deleteDataItemByNameSheet:(NameSheet*) nameSheet;
 - (bool) deleteDataItemByNameSheetId:(NSInteger) nameSheet_id;
 - (bool) updateDataItem:(DataItem*) dataItem;
+- (DataItem*) getDataItemById:(NSInteger) id;
 - (NSMutableArray*) getlistDataItemByNameSheet:(NameSheet*) nameSheet;
 - (NSMutableArray*) getlistDataItemByNameSheetId:(NSInteger) nameSheet_id;
+- (NSMutableArray*) getlistDataItem;
 //////////////////////////////////////////////////
 @end

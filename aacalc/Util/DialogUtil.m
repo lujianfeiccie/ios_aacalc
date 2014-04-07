@@ -15,5 +15,9 @@
     [alert show];
     alert = nil;
 }
-
++(void) createDeleteAlertDialog: (NSString *)title message:(NSString *)message delegate:(id /*<UIAlertViewDelegate>*/)delegate{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:delegate cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+    [alert show];
+    alert = nil;
+}
 @end

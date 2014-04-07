@@ -11,6 +11,13 @@
 @implementation FormTableViewCell
 @synthesize _lblFormName;
 @synthesize formName;
+@synthesize _lblFormTotal;
+@synthesize formTotal;
+@synthesize _lblFormAve;
+@synthesize formAve;
+@synthesize _lblFormNumOfPerson;
+@synthesize formNumOfPerson;
+@synthesize _btnEdit;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -34,4 +41,18 @@
     }
 }
 
+-(void)setFormTotal:(double)f{
+    //if (f!= formTotal) {
+        formTotal = f;
+        _lblFormTotal.text = [NSString stringWithFormat:@"总消费 %.1lf元",f];
+   // }
+}
+-(void)setFormAve:(double)f{
+    formAve = f;
+    _lblFormAve.text = [NSString stringWithFormat:@"平均消费 %.1lf元",f];
+}
+-(void)setFormNumOfPerson:(NSInteger)f{
+    formNumOfPerson = f;
+    _lblFormNumOfPerson.text = [NSString stringWithFormat:@"%i人行",f];
+}
 @end

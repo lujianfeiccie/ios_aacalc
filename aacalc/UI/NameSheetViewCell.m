@@ -11,6 +11,11 @@
 @implementation NameSheetViewCell
 @synthesize _lblSheetName;
 @synthesize sheetName;
+@synthesize _lblSheetTotal;
+@synthesize sheetTotal;
+@synthesize _btnEdit;
+@synthesize _lblSheetResult;
+@synthesize sheetResult;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -31,5 +36,20 @@
         sheetName = [s copy];
         _lblSheetName.text = s;
     }
+}
+-(void) setSheetTotal:(double)s{
+    sheetTotal = s;
+    _lblSheetTotal.text = [NSString stringWithFormat:@"出了%.1lf元",s];
+}
+-(void) setSheetResult:(double)s{
+    sheetResult = s;
+    NSString *result = @"";
+    
+    if (s>0) {
+        result = [NSString stringWithFormat:@"给%.1lf元",fabs(s)];
+    }else{
+        result = [NSString stringWithFormat:@"收%.1lf元",fabs(s)];
+    }
+    _lblSheetResult.text = result;
 }
 @end

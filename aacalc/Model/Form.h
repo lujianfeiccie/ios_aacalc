@@ -12,8 +12,14 @@
 {
     NSInteger _id;
     NSString* _name;
+    double _total;
+    double _ave;
+    NSInteger _numOfPerson;
 }
 @property NSInteger _id;
 @property (nonatomic, retain) NSString *_name;
+@property double _total;
+@property double _ave;
+@property NSInteger _numOfPerson;
 -(NSString*) toString;
 @end

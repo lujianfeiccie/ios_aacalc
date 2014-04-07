@@ -26,19 +26,27 @@
     [[app navController] popViewControllerAnimated:YES];
 }
 -(void) toolBarFinish{
+    NSString* formName = [_txtFormName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if ([formName isEqualToString:@""] ||
+        formName == nil) {
+        [DialogUtil createAlertDialog:@"提示" message:@"名称不能为空!" delegate:nil];
+        return;
+    }
+    
     
     MyDBManager *dbmanager = [MyDBManager getInstance];
     Form *form = [[Form alloc] init];
     form._id = _form_id;
-    form._name = _txtFormName.text;
+    form._name = formName;
     
     switch (_jumpType) {
         case Add:
         {
             if([dbmanager insertForm:form]){
-                [DialogUtil createAlertDialog:@"提示" message:@"添加成功" delegate:self];
+                [DialogUtil createAlertDialog:@"提示" message:@"添加成功" delegate:nil];
             }else{
-                [DialogUtil createAlertDialog:@"提示" message:@"添加失败" delegate:self];
+                [DialogUtil createAlertDialog:@"提示" message:@"添加失败" delegate:nil];
             }
 
         }
@@ -46,9 +54,9 @@
         case Edit:
         {
             if([dbmanager updateForm:form]){
-                [DialogUtil createAlertDialog:@"提示" message:@"修改成功" delegate:self];
+                [DialogUtil createAlertDialog:@"提示" message:@"修改成功" delegate:nil];
             }else{
-                [DialogUtil createAlertDialog:@"提示" message:@"修改失败" delegate:self];
+                [DialogUtil createAlertDialog:@"提示" message:@"修改失败" delegate:nil];
             }
         }
             break;
@@ -58,12 +66,23 @@
 
       // [[app navController] popViewControllerAnimated:YES];
 }
+
+- (IBAction)ActionDelete:(id)sender {
+    
+    [DialogUtil createDeleteAlertDialog:@"警告" message:@"确定要删除此项?" delegate:self];
+}
 #pragma marks -- UIAlertViewDelegate --
 //根据被点击按钮的索引处理点击事件
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
         case 0:{
+            MyDBManager *dbmanager = [MyDBManager getInstance];
+            if ([dbmanager deleteFormById:_form_id]) {
+                [DialogUtil createAlertDialog:@"提示" message:@"删除成功" delegate:nil];
+            }else{
+                [DialogUtil createAlertDialog:@"提示" message:@"删除失败" delegate:nil];
+            }
             [[app navController] popViewControllerAnimated:YES];
         }
             break;
@@ -98,6 +117,7 @@
         case Add:
         {
             self.navigationItem.title=@"新增游记";
+            [_btnDelete setHidden:YES];
         }
             break;
         case Edit:

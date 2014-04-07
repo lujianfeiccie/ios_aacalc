@@ -25,6 +25,10 @@
     UIViewController *next = [[self storyboard] instantiateViewControllerWithIdentifier:@"form_add_edit"];
     [((FormDetail*)next) setModel:0 JumpToDo:Add];
     [[app navController] pushViewController:next animated:YES];
+//    MyDBManager *dbmanager = [MyDBManager getInstance];
+//    NSLogExt(@"form count=%i",[[dbmanager getlistForm] count]);
+//    NSLogExt(@"namesheet count=%i",[[dbmanager getlistNameSheet] count]);
+//    NSLogExt(@"dataitem count=%i",[[dbmanager getlistDataItem] count]);
 }
 - (void)viewDidLoad
 {
@@ -94,11 +98,29 @@
     Form* form = [_datalist objectAtIndex:row];
     
     cell.formName = form._name;
+    cell.formTotal = form._total;
+    cell.formAve = form._ave;
+    cell.formNumOfPerson = form._numOfPerson;
+    [cell._btnEdit addTarget:self action:@selector(ActionEdit:event:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
+}
+-(IBAction)ActionEdit:(UIControl *)sender event:(id)event{
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchPos = [touch locationInView:_tableview];
+    NSIndexPath *indexPath = [_tableview indexPathForRowAtPoint:touchPos];
+    if(indexPath != nil){
+        //Todo: get model at indexPath, update cell or something other
+        NSUInteger row =[indexPath row];
+        Form* form = [_datalist objectAtIndex:row];
+        
+        UIViewController *next = [[self storyboard] instantiateViewControllerWithIdentifier:@"form_add_edit"];
+        [((FormDetail*)next) setModel:form._id JumpToDo:Edit];
+        [[app navController] pushViewController:next animated:YES];
+    }
 }
 
 -(GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50;
+    return 90;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

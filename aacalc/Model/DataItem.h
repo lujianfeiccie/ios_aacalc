@@ -11,12 +11,12 @@
 @interface DataItem : NSObject
 {
     NSInteger _id;
-    NSInteger _cost;
+    double _cost;
     NSString* _note;
     NSInteger _name_sheet_id;
 }
 @property NSInteger _id;
-@property NSInteger _cost;
+@property double _cost;
 @property (nonatomic, retain) NSString *_note;
 @property NSInteger _name_sheet_id;
 -(NSString*) toString;

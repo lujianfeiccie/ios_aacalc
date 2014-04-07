@@ -1,24 +1,25 @@
 //
-//  NameSheetDetail.h
+//  DataItemDetail.h
 //  aacalc
 //
-//  Created by Apple on 14-4-6.
+//  Created by Apple on 14-4-7.
 //  Copyright (c) 2014年 Apple. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-
-@interface NameSheetDetail : UIViewController
+@interface DataItemDetail : UIViewController
 {
     AppDelegate *app;
-    __weak IBOutlet UITextField *_txtName;
+    __weak IBOutlet UITextField *_txtCost;
+    __weak IBOutlet UITextField *_txtNote;
+   
+    NSInteger _dataItemId;
     NSInteger _nameSheetId;
-    NSInteger _formId;
     JumpType _jumpType;
     __weak IBOutlet UIButton *_btnDelete;
 }
--(void) setModel: (NSInteger) nameSheetId formId :(NSInteger) formId JumpToDo :(JumpType) jumpType;
+-(void) setModel: (NSInteger) dataItemId nameSheetId :(NSInteger) nameSheetId JumpToDo :(JumpType) jumpType;
 -(void) toolBarBack;
 -(void) toolBarFinish;
 - (IBAction)ActionDelete:(id)sender;

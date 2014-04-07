@@ -11,7 +11,18 @@
 @implementation Form
 @synthesize _id;
 @synthesize _name;
+@synthesize _total;
+@synthesize _ave;
+@synthesize _numOfPerson;
+-(id) init{
+    _name = @"";
+    _total = 0;
+    _id = 0;
+    _ave = 0;
+    _numOfPerson = 0;
+    return  self;
+}
 -(NSString*) toString{
-    return [NSString stringWithFormat:@"id=%i name=%@",_id,_name];
+    return [NSString stringWithFormat:@"id=%i name=%@ total=%.1lf ave=%.1lf num Of person=%i",_id,_name,_total,_ave,_numOfPerson];
 }
 @end

@@ -21,4 +21,5 @@ UITableViewDataSource>
 -(void) toolBarAdd;
 -(void) toolBarBack;
 -(void) setModel:(NSInteger) formid;
+-(IBAction)ActionEdit:(UIControl *)sender event:(id)event;
 @end

@@ -13,5 +13,13 @@
     
 }
 @property(retain,nonatomic) IBOutlet UILabel* _lblFormName;
+@property(retain,nonatomic) IBOutlet UILabel* _lblFormTotal;
+@property(retain,nonatomic) IBOutlet UILabel* _lblFormAve;
+@property(retain,nonatomic) IBOutlet UILabel* _lblFormNumOfPerson;
+@property(retain,nonatomic) IBOutlet UIButton* _btnEdit;
 @property(copy,nonatomic) NSString* formName;
+
+@property (nonatomic) double formTotal;
+@property (nonatomic) double formAve;
+@property (nonatomic) NSInteger formNumOfPerson;
 @end
