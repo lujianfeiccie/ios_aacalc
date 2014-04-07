@@ -64,7 +64,7 @@
             break;
     }
 
-      // [[app navController] popViewControllerAnimated:YES];
+       [[app navController] popViewControllerAnimated:YES];
 }
 
 - (IBAction)ActionDelete:(id)sender {

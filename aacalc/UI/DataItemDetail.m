@@ -9,7 +9,10 @@
 #import "DataItemDetail.h"
 #import "ButtonUtil.h"
 #import "DialogUtil.h"
+#import "PlatformUtil.h"
 #import "DataItem.h"
+#import "NSLogExt.h"
+#define NUMBERS @"0123456789."
 @interface DataItemDetail ()
 
 @end
@@ -21,6 +24,7 @@
     _dataItemId = dataItemId;
     _nameSheetId = nameSheetId;
     _jumpType = jumpType;
+    
 }
 -(void) toolBarBack
 {
@@ -28,11 +32,19 @@
 }
 -(void) toolBarFinish
 {
+    
+    NSString* cost =  [_txtCost.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if([cost isEqualToString:@""] ||
+       cost == nil){
+        [DialogUtil createAlertDialog:@"提示" message:@"消费金额不能为空!" delegate:nil];
+        return;
+    }
     MyDBManager *dbmanager = [MyDBManager getInstance];
     DataItem *dataItem = [[DataItem alloc] init];
     dataItem._id = _dataItemId;
     dataItem._note = _txtNote.text;
-    dataItem._cost =     [[_txtCost.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] doubleValue];
+    dataItem._cost = [cost doubleValue];
     dataItem._name_sheet_id = _nameSheetId;
     
     switch (_jumpType) {
@@ -61,7 +73,34 @@
     [[app navController] popViewControllerAnimated:YES];
 
 }
-
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    
+    NSCharacterSet *cs;
+    if(textField == _txtCost)
+    {
+        cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERS] invertedSet];
+        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+        BOOL basicTest = [string isEqualToString:filtered];
+        if(!basicTest)
+        {
+            [DialogUtil createAlertDialog:@"提示" message:@"请输入数字!" delegate:nil];
+            return NO;
+        }
+        
+        NSString* tmp=[NSString stringWithFormat:@"%@%@",_txtCost.text,string];
+        NSArray *split = [tmp componentsSeparatedByString:@"."];
+        NSInteger numOfDot = [split count]-1;
+        if(numOfDot>1){
+            [DialogUtil createAlertDialog:@"提示" message:@"超过一个小数点!" delegate:nil];
+            return NO;
+        }
+//        NSLogExt(@"dot length=%i str=%@",[firstSplit count],tmp);
+    }
+    
+    //其他的类型不需要检测，直接写入
+    return YES;
+}
 - (IBAction)ActionDelete:(id)sender {
     [DialogUtil createDeleteAlertDialog:@"警告" message:@"确定要删除?" delegate:self];
 }
@@ -105,6 +144,7 @@
 	// Do any additional setup after loading the view.
     app = [[UIApplication sharedApplication] delegate];
     
+    _txtCost.delegate = self;
     
     self.navigationItem.leftBarButtonItem = [ButtonUtil createToolBarButton:@"返回" target:self action:@selector(toolBarBack)];
     
@@ -138,5 +178,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+      [PlatformUtil ResizeUIAll:self.view];
+}
 @end

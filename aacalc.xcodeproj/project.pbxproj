@@ -35,9 +35,11 @@
 		1866B18918F00AD100A17794 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866B18418F00AD100A17794 /* FMResultSet.m */; };
 		1866B18B18F00BBB00A17794 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1866B18A18F00BBB00A17794 /* libsqlite3.0.dylib */; };
 		18A01FD518F0F6310078E7AE /* DataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A01FD418F0F6310078E7AE /* DataItem.m */; };
+		18A13F2F18F2BD0C00677A44 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A13F2E18F2BD0C00677A44 /* Default.png */; };
 		18B04FE218F00D6C00D006BE /* SqlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B04FE118F00D6C00D006BE /* SqlHelper.m */; };
 		18E819E218F0350C00754406 /* MyDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E819E118F0350C00754406 /* MyDBManager.m */; };
 		18E819E518F03A8C00754406 /* Form.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E819E418F03A8C00754406 /* Form.m */; };
+		18EA9B9818F2B9AB00FD1BB8 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA9B9718F2B9AB00FD1BB8 /* Icon.png */; };
 		18ED4F7C18F19387002969C8 /* NameSheetDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ED4F7B18F19387002969C8 /* NameSheetDetail.m */; };
 		18ED4F7F18F19554002969C8 /* NameSheetViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ED4F7E18F19554002969C8 /* NameSheetViewCell.m */; };
 		18ED4F8118F19577002969C8 /* NameSheetViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18ED4F8018F19577002969C8 /* NameSheetViewCell.xib */; };
@@ -105,12 +107,14 @@
 		1866B18A18F00BBB00A17794 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		18A01FD318F0F6310078E7AE /* DataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataItem.h; sourceTree = "<group>"; };
 		18A01FD418F0F6310078E7AE /* DataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataItem.m; sourceTree = "<group>"; };
+		18A13F2E18F2BD0C00677A44 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		18B04FE018F00D6C00D006BE /* SqlHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlHelper.h; sourceTree = "<group>"; };
 		18B04FE118F00D6C00D006BE /* SqlHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqlHelper.m; sourceTree = "<group>"; };
 		18E819E018F0350C00754406 /* MyDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDBManager.h; sourceTree = "<group>"; };
 		18E819E118F0350C00754406 /* MyDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDBManager.m; sourceTree = "<group>"; };
 		18E819E318F03A8C00754406 /* Form.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Form.h; sourceTree = "<group>"; };
 		18E819E418F03A8C00754406 /* Form.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Form.m; sourceTree = "<group>"; };
+		18EA9B9718F2B9AB00FD1BB8 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		18ED4F7A18F19387002969C8 /* NameSheetDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameSheetDetail.h; sourceTree = "<group>"; };
 		18ED4F7B18F19387002969C8 /* NameSheetDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameSheetDetail.m; sourceTree = "<group>"; };
 		18ED4F7D18F19554002969C8 /* NameSheetViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameSheetViewCell.h; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 		18293B1A18F0099D00E453C9 = {
 			isa = PBXGroup;
 			children = (
+				18EA9B9418F2B7E500FD1BB8 /* images */,
 				1863738818F124D2002C1DED /* UI */,
 				18A01FD618F105E60078E7AE /* Util */,
 				18B04FE318F00DFB00D006BE /* Model */,
@@ -311,6 +316,16 @@
 			path = aacalc/Model;
 			sourceTree = "<group>";
 		};
+		18EA9B9418F2B7E500FD1BB8 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				18A13F2E18F2BD0C00677A44 /* Default.png */,
+				18EA9B9718F2B9AB00FD1BB8 /* Icon.png */,
+			);
+			name = images;
+			path = aacalc/images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -390,8 +405,10 @@
 				18293B3F18F009A100E453C9 /* Images.xcassets in Resources */,
 				1863739918F14313002C1DED /* FormTableViewCell.xib in Resources */,
 				18ED4F8118F19577002969C8 /* NameSheetViewCell.xib in Resources */,
+				18A13F2F18F2BD0C00677A44 /* Default.png in Resources */,
 				18EDCFF518F24900000B3B5C /* DataItemViewCell.xib in Resources */,
 				18293B3118F009A100E453C9 /* InfoPlist.strings in Resources */,
+				18EA9B9818F2B9AB00FD1BB8 /* Icon.png in Resources */,
 				18293B3A18F009A100E453C9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

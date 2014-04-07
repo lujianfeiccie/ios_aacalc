@@ -9,6 +9,7 @@
 #import "NameSheetDetail.h"
 #import "ButtonUtil.h"
 #import "DialogUtil.h"
+#import "PlatformUtil.h"
 #import "MyDBManager.h"
 @interface NameSheetDetail ()
 
@@ -20,11 +21,18 @@
     [[app navController] popViewControllerAnimated:YES];
 }
 -(void) toolBarFinish{
+    NSString* name = [_txtName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if ([name isEqualToString:@""] ||
+        name == nil) {
+        [DialogUtil createAlertDialog:@"提示" message:@"姓名不能为空!" delegate:nil];
+        return;
+    }
     MyDBManager *dbmanager = [MyDBManager getInstance];
     
     NameSheet* namesheet = [[NameSheet alloc] init];
     namesheet._form_id = _formId;
-    namesheet._name = _txtName.text;
+    namesheet._name = name;
     namesheet._id = _nameSheetId;
     switch (_jumpType) {
         case Add:
@@ -124,7 +132,10 @@
     
     self.navigationItem.rightBarButtonItem = [ButtonUtil createToolBarButton:@"确定" target:self action:@selector(toolBarFinish)];
 }
-
+-(void) viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+      [PlatformUtil ResizeUIAll:self.view];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
