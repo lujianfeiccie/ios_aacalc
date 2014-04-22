@@ -30,6 +30,10 @@
 //    NSLogExt(@"namesheet count=%i",[[dbmanager getlistNameSheet] count]);
 //    NSLogExt(@"dataitem count=%i",[[dbmanager getlistDataItem] count]);
 }
+-(void) toolBarAbout{
+    UIViewController *next = [[self storyboard] instantiateViewControllerWithIdentifier:@"about_view"];
+    [[app navController] pushViewController:next animated:YES];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -42,6 +46,7 @@
     self.navigationItem.title = @"游记";
     self.navigationItem.rightBarButtonItem = [ButtonUtil createToolBarButton:@"添加" target:self action:@selector(toolBarAdd)];
 
+    self.navigationItem.leftBarButtonItem = [ButtonUtil createToolBarButton:@"关于" target:self action:@selector(toolBarAbout)];
     MyDBManager *dbmanager = [MyDBManager getInstance];
     _datalist = [dbmanager getlistForm];
     

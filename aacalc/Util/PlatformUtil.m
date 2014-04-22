@@ -24,4 +24,12 @@
                                   view.frame.size.width,
                                   view.frame.size.height)];
 }
+
++(void) ResizeUIToBottom: (UIView*) view parentView :(UIView*) parentView
+{
+    [view setFrame:CGRectMake(view.frame.origin.x,
+                             parentView.frame.size.height-view.frame.size.height-20,
+                             view.frame.size.width,
+                              view.frame.size.height)];
+}
 @end

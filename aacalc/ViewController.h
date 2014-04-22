@@ -16,5 +16,6 @@ UITableViewDataSource>
     NSMutableArray* _datalist;
 }
 -(IBAction)ActionEdit:(UIControl *)sender event:(id)event;
+-(void) toolBarAbout;
 - (void)toolBarAdd;
 @end

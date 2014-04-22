@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181B70421906B6F300EE0F7D /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 181B70411906B6F200EE0F7D /* AboutView.m */; };
+		181B70441906BA6800EE0F7D /* me.png in Resources */ = {isa = PBXBuildFile; fileRef = 181B70431906BA6800EE0F7D /* me.png */; };
 		182466A918F04769002CCF26 /* NameSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 182466A818F04769002CCF26 /* NameSheet.m */; };
 		18293B2718F009A100E453C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18293B2618F009A100E453C9 /* Foundation.framework */; };
 		18293B2918F009A100E453C9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18293B2818F009A100E453C9 /* CoreGraphics.framework */; };
@@ -62,6 +64,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		181B70401906B6F200EE0F7D /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutView.h; sourceTree = "<group>"; };
+		181B70411906B6F200EE0F7D /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutView.m; sourceTree = "<group>"; };
+		181B70431906BA6800EE0F7D /* me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me.png; sourceTree = "<group>"; };
 		182466A718F04769002CCF26 /* NameSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameSheet.h; sourceTree = "<group>"; };
 		182466A818F04769002CCF26 /* NameSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameSheet.m; sourceTree = "<group>"; };
 		18293B2318F009A100E453C9 /* aacalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aacalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,6 +264,8 @@
 				18EDCFF418F24900000B3B5C /* DataItemViewCell.xib */,
 				18EDCFF118F23FA3000B3B5C /* DataItemDetail.h */,
 				18EDCFF218F23FA3000B3B5C /* DataItemDetail.m */,
+				181B70401906B6F200EE0F7D /* AboutView.h */,
+				181B70411906B6F200EE0F7D /* AboutView.m */,
 			);
 			name = UI;
 			path = aacalc/UI;
@@ -319,6 +326,7 @@
 		18EA9B9418F2B7E500FD1BB8 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				181B70431906BA6800EE0F7D /* me.png */,
 				18A13F2E18F2BD0C00677A44 /* Default.png */,
 				18EA9B9718F2B9AB00FD1BB8 /* Icon.png */,
 			);
@@ -405,6 +413,7 @@
 				18293B3F18F009A100E453C9 /* Images.xcassets in Resources */,
 				1863739918F14313002C1DED /* FormTableViewCell.xib in Resources */,
 				18ED4F8118F19577002969C8 /* NameSheetViewCell.xib in Resources */,
+				181B70441906BA6800EE0F7D /* me.png in Resources */,
 				18A13F2F18F2BD0C00677A44 /* Default.png in Resources */,
 				18EDCFF518F24900000B3B5C /* DataItemViewCell.xib in Resources */,
 				18293B3118F009A100E453C9 /* InfoPlist.strings in Resources */,
@@ -428,6 +437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				181B70421906B6F300EE0F7D /* AboutView.m in Sources */,
 				18E819E218F0350C00754406 /* MyDBManager.m in Sources */,
 				18ED4F8718F1AD9C002969C8 /* DataItemList.m in Sources */,
 				18293B3D18F009A100E453C9 /* ViewController.m in Sources */,

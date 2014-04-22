@@ -135,6 +135,8 @@
 }
 -(void)viewDidLayoutSubviews{
     [PlatformUtil ResizeUIAll:self.view];
+    
+    [PlatformUtil ResizeUIToBottom:_btnDelete parentView:self.view]; 
 }
 - (void)didReceiveMemoryWarning
 {

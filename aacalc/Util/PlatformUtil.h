@@ -15,4 +15,5 @@
 @interface PlatformUtil : NSObject
 +(void) ResizeUIAll: (UIView*) view;
 +(void) ResizeUI: (UIView*) view;
++(void) ResizeUIToBottom: (UIView*) view parentView :(UIView*) parentView;
 @end
