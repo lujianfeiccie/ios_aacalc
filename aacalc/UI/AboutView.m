@@ -30,6 +30,10 @@
     app = [[UIApplication sharedApplication] delegate];
     
     self.navigationItem.leftBarButtonItem = [ButtonUtil createToolBarButton:@"返回" target:self action:@selector(toolBarBack)];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
+    
+    
+    m_lbl_version.text = [NSString stringWithFormat:@"v%@",version];
 }
 -(void) toolBarBack
 {

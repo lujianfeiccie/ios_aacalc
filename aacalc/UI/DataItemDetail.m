@@ -12,6 +12,7 @@
 #import "PlatformUtil.h"
 #import "DataItem.h"
 #import "NSLogExt.h"
+#import "Util.h"
 #define NUMBERS @"0123456789."
 @interface DataItemDetail ()
 
@@ -144,7 +145,12 @@
 	// Do any additional setup after loading the view.
     app = [[UIApplication sharedApplication] delegate];
     
+    //触摸其它地方让键盘隐藏
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(textfieldTouchUpOutside:)];
+    [self.view addGestureRecognizer:singleTap];
+    
     _txtCost.delegate = self;
+    _txtNote.delegate = self;
     
     self.navigationItem.leftBarButtonItem = [ButtonUtil createToolBarButton:@"返回" target:self action:@selector(toolBarBack)];
     
@@ -184,4 +190,34 @@
     
     [PlatformUtil ResizeUIToBottom:_btnDelete parentView:self.view];
 }
+
+-(IBAction)textfieldTouchUpOutside:(id)sender
+{
+    [Util hideKeyboard:self.view];
+    
+    [_txtCost resignFirstResponder];
+    [_txtNote resignFirstResponder];
+}
+
+// 当点击键盘的返回键（右下角）时，执行该方法。
+// 一般用来隐藏键盘
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    // When the user presses return, take focus away from the text field so that the keyboard is dismissed.
+    [Util hideKeyboard:self.view];
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+- (void)keyboardWillShow:(NSNotification *)noti
+{
+    [Util showKeyboard:self.view];
+}
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [Util editingKeyboard:self.view :textField];
+}
+#pragma mark -
+
 @end

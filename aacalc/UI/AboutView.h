@@ -11,6 +11,7 @@
 @interface AboutView : UIViewController
 {
     AppDelegate *app;
+    __weak IBOutlet UILabel *m_lbl_version;
 }
 -(void) toolBarBack;
 @end

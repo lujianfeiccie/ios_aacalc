@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-@interface DataItemDetail : UIViewController
+@interface DataItemDetail : UIViewController<UITextViewDelegate>
 {
     AppDelegate *app;
     __weak IBOutlet UITextField *_txtCost;
@@ -23,4 +23,5 @@
 -(void) toolBarBack;
 -(void) toolBarFinish;
 - (IBAction)ActionDelete:(id)sender;
+-(IBAction)textfieldTouchUpOutside:(id)sender;
 @end
