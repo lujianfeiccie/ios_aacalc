@@ -53,6 +53,9 @@
    
     _tableview.delegate = self;
     _tableview.dataSource = self;
+    
+    
+   
    
 }
 -(void)viewDidAppear:(BOOL)animated{

@@ -13,12 +13,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
+
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    
+    /*UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    UIImage *image_temp = [UIImage imageNamed:@"Default.png"];
+    [image setImage:image_temp];
+    [self.window addSubview:image];*/
     
     storyBoard=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     
+   // [NSThread sleepForTimeInterval:2];
+
     //[self MyLog:[NSString stringWithFormat:@"%f",[[[UIDevice currentDevice] systemVersion] floatValue]]];
    
     ViewController *rootView =  [storyBoard instantiateViewControllerWithIdentifier:@"rootview"];
@@ -31,7 +41,6 @@
     //[self.navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"title_bar.png"] forBarMetrics:UIBarMetricsDefault];
     [self.window addSubview:self.navController.view];
     [self.window makeKeyAndVisible];
-    
     
     ///Create database and create tables
      dbmanager = [MyDBManager getInstance];

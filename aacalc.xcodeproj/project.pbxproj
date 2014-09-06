@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		18059BFC19A8EA5300A28732 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 18059BFB19A8EA5300A28732 /* Util.m */; };
-		18059BFF19A8F4E200A28732 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18059BFD19A8F4E200A28732 /* Icon.png */; };
-		18059C0019A8F4E200A28732 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18059BFE19A8F4E200A28732 /* Icon@2x.png */; };
-		18059C0219A8F7D000A28732 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 18059C0119A8F7D000A28732 /* Default.png */; };
 		181B70421906B6F300EE0F7D /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 181B70411906B6F200EE0F7D /* AboutView.m */; };
 		181B70441906BA6800EE0F7D /* me.png in Resources */ = {isa = PBXBuildFile; fileRef = 181B70431906BA6800EE0F7D /* me.png */; };
 		182466A918F04769002CCF26 /* NameSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 182466A818F04769002CCF26 /* NameSheet.m */; };
@@ -40,6 +37,10 @@
 		1866B18818F00AD100A17794 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866B18218F00AD100A17794 /* FMDatabaseQueue.m */; };
 		1866B18918F00AD100A17794 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866B18418F00AD100A17794 /* FMResultSet.m */; };
 		1866B18B18F00BBB00A17794 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1866B18A18F00BBB00A17794 /* libsqlite3.0.dylib */; };
+		188C191B19BB6A0300EBF1DE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 188C191719BB6A0300EBF1DE /* Default.png */; };
+		188C191C19BB6A0300EBF1DE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188C191819BB6A0300EBF1DE /* Default@2x.png */; };
+		188C191D19BB6A0300EBF1DE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 188C191919BB6A0300EBF1DE /* Icon.png */; };
+		188C191E19BB6A0300EBF1DE /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188C191A19BB6A0300EBF1DE /* Icon@2x.png */; };
 		18A01FD518F0F6310078E7AE /* DataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A01FD418F0F6310078E7AE /* DataItem.m */; };
 		18B04FE218F00D6C00D006BE /* SqlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B04FE118F00D6C00D006BE /* SqlHelper.m */; };
 		18E819E218F0350C00754406 /* MyDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E819E118F0350C00754406 /* MyDBManager.m */; };
@@ -68,9 +69,6 @@
 /* Begin PBXFileReference section */
 		18059BFA19A8EA5300A28732 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		18059BFB19A8EA5300A28732 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
-		18059BFD19A8F4E200A28732 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		18059BFE19A8F4E200A28732 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		18059C0119A8F7D000A28732 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		181B70401906B6F200EE0F7D /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutView.h; sourceTree = "<group>"; };
 		181B70411906B6F200EE0F7D /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutView.m; sourceTree = "<group>"; };
 		181B70431906BA6800EE0F7D /* me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me.png; sourceTree = "<group>"; };
@@ -117,6 +115,10 @@
 		1866B18318F00AD100A17794 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		1866B18418F00AD100A17794 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		1866B18A18F00BBB00A17794 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		188C191719BB6A0300EBF1DE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		188C191819BB6A0300EBF1DE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		188C191919BB6A0300EBF1DE /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		188C191A19BB6A0300EBF1DE /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		18A01FD318F0F6310078E7AE /* DataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataItem.h; sourceTree = "<group>"; };
 		18A01FD418F0F6310078E7AE /* DataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataItem.m; sourceTree = "<group>"; };
 		18B04FE018F00D6C00D006BE /* SqlHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlHelper.h; sourceTree = "<group>"; };
@@ -221,6 +223,10 @@
 		18293B2D18F009A100E453C9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				188C191719BB6A0300EBF1DE /* Default.png */,
+				188C191819BB6A0300EBF1DE /* Default@2x.png */,
+				188C191919BB6A0300EBF1DE /* Icon.png */,
+				188C191A19BB6A0300EBF1DE /* Icon@2x.png */,
 				18293B2E18F009A100E453C9 /* aacalc-Info.plist */,
 				18293B2F18F009A100E453C9 /* InfoPlist.strings */,
 				18293B3218F009A100E453C9 /* main.m */,
@@ -333,9 +339,6 @@
 		18EA9B9418F2B7E500FD1BB8 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				18059C0119A8F7D000A28732 /* Default.png */,
-				18059BFD19A8F4E200A28732 /* Icon.png */,
-				18059BFE19A8F4E200A28732 /* Icon@2x.png */,
 				181B70431906BA6800EE0F7D /* me.png */,
 			);
 			name = images;
@@ -421,16 +424,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18059BFF19A8F4E200A28732 /* Icon.png in Resources */,
 				18293B3F18F009A100E453C9 /* Images.xcassets in Resources */,
 				1863739918F14313002C1DED /* FormTableViewCell.xib in Resources */,
+				188C191D19BB6A0300EBF1DE /* Icon.png in Resources */,
 				18ED4F8118F19577002969C8 /* NameSheetViewCell.xib in Resources */,
+				188C191C19BB6A0300EBF1DE /* Default@2x.png in Resources */,
+				188C191E19BB6A0300EBF1DE /* Icon@2x.png in Resources */,
+				188C191B19BB6A0300EBF1DE /* Default.png in Resources */,
 				181B70441906BA6800EE0F7D /* me.png in Resources */,
 				18EDCFF518F24900000B3B5C /* DataItemViewCell.xib in Resources */,
 				18293B3118F009A100E453C9 /* InfoPlist.strings in Resources */,
 				18293B3A18F009A100E453C9 /* Main.storyboard in Resources */,
-				18059C0019A8F4E200A28732 /* Icon@2x.png in Resources */,
-				18059C0219A8F7D000A28732 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,7 +610,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "aacalc/aacalc-Prefix.pch";
 				INFOPLIST_FILE = "aacalc/aacalc-Info.plist";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
@@ -623,7 +627,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "aacalc/aacalc-Prefix.pch";
 				INFOPLIST_FILE = "aacalc/aacalc-Info.plist";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
