@@ -127,7 +127,7 @@
         [[app navController] pushViewController:next animated:YES];
     }
 }
--(GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 80;
 }
 
@@ -141,6 +141,10 @@
      [[app navController] pushViewController:next animated:YES];
     NSLogExt(@"didSelectRowAtIndexPath row=%i",row);
 }
-
+- (void)dealloc{
+    [_tableview release];
+    [_datalist release];
+    [super dealloc];
+}
 
 @end

@@ -12,7 +12,10 @@
 static MyDBManager *instance;
 
 -(id) init{
-    sqlHelper = [SqlHelper getInstance];
+    if (self = [super init])
+    {
+        
+    }
     return self;
 }
 
@@ -28,17 +31,17 @@ static MyDBManager *instance;
 {
     bool result;
     NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS  %@ (_id INTEGER PRIMARY KEY AUTOINCREMENT, _name VARCHAR,_total REAL,_ave REAL,_numOfPerson INTEGER)",TABLE_FORM];
-    result= [[sqlHelper getDatabase] executeUpdate:sql];
+    result= [[[SqlHelper getInstance] getDatabase] executeUpdate:sql];
     NSLogExt(@"%@ result=%d",
                  TABLE_FORM,result);
     
     
     sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS  %@ (_id INTEGER PRIMARY KEY AUTOINCREMENT, _name VARCHAR, _form_id INTEGER,_total REAL,_result REAL)",TABLE_NAME_SHEET];
-    result= [[sqlHelper getDatabase] executeUpdate:sql];
+    result= [[[SqlHelper getInstance] getDatabase] executeUpdate:sql];
     NSLogExt(@"%@ result=%d",TABLE_NAME_SHEET,result);
     
     sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS  %@ (_id INTEGER PRIMARY KEY AUTOINCREMENT, _cost REAL, _note VARCHAR,_name_sheet_id INTEGER)",TABLE_DATA_ITEM];
-    result= [[sqlHelper getDatabase] executeUpdate:sql];
+    result= [[[SqlHelper getInstance] getDatabase] executeUpdate:sql];
     NSLogExt(@"%@ result=%d",TABLE_DATA_ITEM,result);
 
     
@@ -49,10 +52,10 @@ static MyDBManager *instance;
 - (bool) insertForm:(Form*) form{
     bool result = NO;
 
-    NSString *sql =[NSString stringWithFormat:@"INSERT INTO %@(_name,_total,_ave,_numOfPerson) VALUES('%@',%.1lf,%.1lf,%i)",TABLE_FORM,
-                    [form _name],[form _total],[form _ave],[form _numOfPerson]];
+    NSString *sql =[NSString stringWithFormat:@"INSERT INTO %@(_name,_total,_ave,_numOfPerson) VALUES('%@',%.1lf,%.1lf,%li)",TABLE_FORM,
+                    [form _name],[form _total],[form _ave],(long)[form _numOfPerson]];
     
-    result = [[sqlHelper getDatabase] executeUpdate:sql];
+    result = [[[SqlHelper getInstance] getDatabase] executeUpdate:sql];
     
     NSLogExt(@"%@ result=%d sql=%@",form.toString,result,sql);
     return result;
@@ -64,7 +67,7 @@ static MyDBManager *instance;
 }
 - (bool) deleteFormById:(NSInteger) form_id{
     bool result ;
-    result =[[sqlHelper getDatabase] executeUpdate:[NSString stringWithFormat:@"DELETE FROM  %@ WHERE _id=%i",TABLE_FORM,form_id]];
+    result =[[[SqlHelper getInstance] getDatabase] executeUpdate:[NSString stringWithFormat:@"DELETE FROM  %@ WHERE _id=%li",TABLE_FORM,(long)form_id]];
     NSLogExt(@"id=%@ result=%d",form_id,result);
     [self deleteNameSheetByFormId:form_id];
     return result;
@@ -72,8 +75,8 @@ static MyDBManager *instance;
 }
 - (bool) updateForm:(Form*) form{
     bool result ;
-    NSString* sql = [NSString stringWithFormat:@"UPDATE %@ SET _name='%@',_total=%.1lf,_ave=%.1lf,_numOfPerson=%i WHERE _id=%i",TABLE_FORM,[form _name],[form _total],[form _ave],[form _numOfPerson],[form _id]];
-    result =[[sqlHelper getDatabase] executeUpdate:sql];
+    NSString* sql = [NSString stringWithFormat:@"UPDATE %@ SET _name='%@',_total=%.1lf,_ave=%.1lf,_numOfPerson=%li WHERE _id=%li",TABLE_FORM,[form _name],[form _total],[form _ave],(long)[form _numOfPerson],(long)[form _id]];
+    result =[[[SqlHelper getInstance] getDatabase] executeUpdate:sql];
     NSLogExt(@"%@ result=%d sql=%@",form.toString,result,sql);
     
     
@@ -87,7 +90,7 @@ static MyDBManager *instance;
 }
 - (NSMutableArray*) getlistForm{
     NSMutableArray *list = [[NSMutableArray alloc] init];
-    FMResultSet *rs = [[sqlHelper getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@",TABLE_FORM]];
+    FMResultSet *rs = [[[SqlHelper getInstance] getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@",TABLE_FORM]];
     while ([rs next]) {
         // just print out what we've got in a number of formats.
         
@@ -105,7 +108,7 @@ static MyDBManager *instance;
 }
 
 - (Form*) getFormById: (NSInteger) formId{
-     FMResultSet *rs = [[sqlHelper getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ WHERE _id=%i",TABLE_FORM,formId]];
+     FMResultSet *rs = [[[SqlHelper getInstance] getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ WHERE _id=%li",TABLE_FORM,(long)formId]];
     
     Form* form = [[Form alloc]init];
     if ([rs next]) {
@@ -125,9 +128,9 @@ static MyDBManager *instance;
 {
     bool result = NO;
     
-    NSString* sql =[NSString stringWithFormat:@"INSERT INTO %@(_name,_total,_form_id,_result) VALUES('%@',%.1lf,%i,%.1lf)",TABLE_NAME_SHEET,[nameSheet _name],[nameSheet _total],[nameSheet _form_id],[nameSheet _result]];
+    NSString* sql =[NSString stringWithFormat:@"INSERT INTO %@(_name,_total,_form_id,_result) VALUES('%@',%.1lf,%li,%.1lf)",TABLE_NAME_SHEET,[nameSheet _name],[nameSheet _total],(long)[nameSheet _form_id],[nameSheet _result]];
     
-    result = [[sqlHelper getDatabase] executeUpdate:sql];
+    result = [[[SqlHelper getInstance] getDatabase] executeUpdate:sql];
     
     NSLogExt(@"%@ result=%d sql=%@",nameSheet.toString,result,sql);
     
@@ -142,7 +145,7 @@ static MyDBManager *instance;
 - (bool) deleteNameSheet:(NameSheet*) nameSheet
 {
     bool result ;
-    result =[[sqlHelper getDatabase] executeUpdate:[NSString stringWithFormat:@"DELETE FROM  %@ WHERE _id=?",TABLE_NAME_SHEET],[nameSheet _id]];
+    result =[[[SqlHelper getInstance] getDatabase] executeUpdate:[NSString stringWithFormat:@"DELETE FROM  %@ WHERE _id=?",TABLE_NAME_SHEET],[nameSheet _id]];
     NSLogExt(@"%@ result=%d",nameSheet.toString,result);
     return result;
 }
@@ -160,7 +163,7 @@ static MyDBManager *instance;
     if([datas count]>0){
         NameSheet *obj = [datas objectAtIndex:0];
         
-        result =[[sqlHelper getDatabase] executeUpdate:[NSString stringWithFormat:@"DELETE FROM  %@ WHERE _form_id=%i",TABLE_NAME_SHEET,form_id]];
+        result =[[[SqlHelper getInstance] getDatabase] executeUpdate:[NSString stringWithFormat:@"DELETE FROM  %@ WHERE _form_id=%li",TABLE_NAME_SHEET,(long)form_id]];
         
         //Delete the data item binding to this namesheet
         [self deleteDataItemByNameSheetId:[obj _id]];
@@ -187,7 +190,7 @@ static MyDBManager *instance;
     
     bool result = NO;
  
-    result =[[sqlHelper getDatabase] executeUpdate:[NSString stringWithFormat:@"DELETE FROM  %@ WHERE _id=%i",TABLE_NAME_SHEET,id]];
+    result =[[[SqlHelper getInstance] getDatabase] executeUpdate:[NSString stringWithFormat:@"DELETE FROM  %@ WHERE _id=%li",TABLE_NAME_SHEET,(long)id]];
         
     //Delete the data item binding to this namesheet
     [self deleteDataItemByNameSheetId:id];
@@ -205,7 +208,7 @@ static MyDBManager *instance;
     
     ////////////Update the Form total/////////////
     double total = 0;
-    FMResultSet *rs = [[sqlHelper getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _form_id = %i",TABLE_NAME_SHEET,[nameSheet _form_id]]];
+    FMResultSet *rs = [[[SqlHelper getInstance] getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _form_id = %li",TABLE_NAME_SHEET,(long)[nameSheet _form_id]]];
     
     int count=0;
     while ([rs next]) {
@@ -222,8 +225,8 @@ static MyDBManager *instance;
 - (bool) updateNameSheetFinal:(NameSheet*) nameSheet
 {
     bool result ;
-    NSString* sql =[NSString stringWithFormat:@"UPDATE %@ SET _name='%@',_total=%.1lf,_result=%.1lf WHERE _id=%i",TABLE_NAME_SHEET,[nameSheet _name],[nameSheet _total],[nameSheet _result],[nameSheet _id]];
-    result =[[sqlHelper getDatabase] executeUpdate:sql];
+    NSString* sql =[NSString stringWithFormat:@"UPDATE %@ SET _name='%@',_total=%.1lf,_result=%.1lf WHERE _id=%li",TABLE_NAME_SHEET,[nameSheet _name],[nameSheet _total],[nameSheet _result],(long)[nameSheet _id]];
+    result =[[[SqlHelper getInstance] getDatabase] executeUpdate:sql];
     NSLogExt(@"%@ result=%d sql=%@",nameSheet.toString,result,sql);
     return  result;
 }
@@ -236,8 +239,8 @@ static MyDBManager *instance;
 - (NSMutableArray*) getlistNameSheetByFormId:(NSInteger) form_id
 {
     NSMutableArray *list = [[NSMutableArray alloc] init];
-    FMResultSet *rs = [[sqlHelper getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _form_id = %i",
-                                                             TABLE_NAME_SHEET,form_id]];
+    FMResultSet *rs = [[[SqlHelper getInstance] getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _form_id = %li",
+                                                             TABLE_NAME_SHEET,(long)form_id]];
     NSLogExt(@"formid = %i",form_id);
     while ([rs next]) {
         // just print out what we've got in a number of formats.
@@ -257,8 +260,8 @@ static MyDBManager *instance;
 
 - (NameSheet*) getNameSheetById:(NSInteger) id{
     NameSheet* nameSheet = [[NameSheet alloc]init];
-    FMResultSet *rs = [[sqlHelper getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _id = %i",
-                                                             TABLE_NAME_SHEET,id]];
+    FMResultSet *rs = [[[SqlHelper getInstance] getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _id = %li",
+                                                             TABLE_NAME_SHEET,(long)id]];
     if([rs next]){
         nameSheet._id = id;
         nameSheet._name = [rs stringForColumn:@"_name"];
@@ -271,7 +274,7 @@ static MyDBManager *instance;
 }
 - (NSMutableArray*) getlistNameSheet{
     NSMutableArray *list = [[NSMutableArray alloc] init];
-    FMResultSet *rs = [[sqlHelper getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@",TABLE_NAME_SHEET]];
+    FMResultSet *rs = [[[SqlHelper getInstance] getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@",TABLE_NAME_SHEET]];
     while ([rs next]) {
         // just print out what we've got in a number of formats.
         NameSheet *obj = [[NameSheet alloc]init];
@@ -291,8 +294,8 @@ static MyDBManager *instance;
 - (bool) insertDataItem:(DataItem*) dataItem{
     
     bool result = NO;
-    NSString* sql =[NSString stringWithFormat:@"INSERT INTO %@(_cost,_note,_name_sheet_id) VALUES(%.1lf,'%@',%i)",TABLE_DATA_ITEM,[dataItem _cost],[dataItem _note],[dataItem _name_sheet_id]];
-    result = [[sqlHelper getDatabase] executeUpdate:sql];
+    NSString* sql =[NSString stringWithFormat:@"INSERT INTO %@(_cost,_note,_name_sheet_id) VALUES(%.1lf,'%@',%li)",TABLE_DATA_ITEM,[dataItem _cost],[dataItem _note],(long)[dataItem _name_sheet_id]];
+    result = [[[SqlHelper getInstance] getDatabase] executeUpdate:sql];
     
     NSLogExt(@"%@ result=%d sql=%@",dataItem.toString,result,sql);
     
@@ -317,8 +320,8 @@ static MyDBManager *instance;
     [self updateNameSheet:nameSheet];
     /////////////////////////////////////////////////////
     
-    NSString *sql =[NSString stringWithFormat:@"DELETE FROM  %@ WHERE _id=%i",TABLE_DATA_ITEM, id];
-    result =[[sqlHelper getDatabase] executeUpdate:sql];
+    NSString *sql =[NSString stringWithFormat:@"DELETE FROM  %@ WHERE _id=%li",TABLE_DATA_ITEM, (long)id];
+    result =[[[SqlHelper getInstance] getDatabase] executeUpdate:sql];
     
     NSLogExt(@"sql=%@ result=%d",sql,result);
     
@@ -333,7 +336,7 @@ static MyDBManager *instance;
 - (bool) deleteDataItemByNameSheetId:(NSInteger) nameSheet_id{
   
     bool result ;
-    result =[[sqlHelper getDatabase] executeUpdate:[NSString stringWithFormat:@"DELETE FROM %@ WHERE _name_sheet_id=%i",TABLE_DATA_ITEM,nameSheet_id]];
+    result =[[[SqlHelper getInstance] getDatabase] executeUpdate:[NSString stringWithFormat:@"DELETE FROM %@ WHERE _name_sheet_id=%li",TABLE_DATA_ITEM,(long)nameSheet_id]];
     NSLogExt(@"id=%@ result=%d",nameSheet_id,result);
     
    
@@ -341,13 +344,13 @@ static MyDBManager *instance;
 }
 - (bool) updateDataItem:(DataItem*) dataItem{
     bool result ;
-    NSString* sql =[NSString stringWithFormat:@"UPDATE %@ SET _cost=%.1lf,_note='%@' WHERE _id=%i",TABLE_DATA_ITEM,[dataItem _cost],[dataItem _note],[dataItem _id]];
-    result =[[sqlHelper getDatabase] executeUpdate:sql];
+    NSString* sql =[NSString stringWithFormat:@"UPDATE %@ SET _cost=%.1lf,_note='%@' WHERE _id=%li",TABLE_DATA_ITEM,[dataItem _cost],[dataItem _note],(long)[dataItem _id]];
+    result =[[[SqlHelper getInstance] getDatabase] executeUpdate:sql];
     NSLogExt(@"%@ result=%d sql=%@",dataItem.toString,result,sql);
     
     ////////////Update the name sheet total/////////////
     double total = 0;
-    FMResultSet *rs = [[sqlHelper getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _name_sheet_id = %i",TABLE_DATA_ITEM,[dataItem _name_sheet_id]]];
+    FMResultSet *rs = [[[SqlHelper getInstance] getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _name_sheet_id = %li",TABLE_DATA_ITEM,(long)[dataItem _name_sheet_id]]];
     
     while ([rs next]) {
         total += [rs doubleForColumn:@"_cost"];
@@ -360,7 +363,7 @@ static MyDBManager *instance;
 }
 
 - (DataItem*) getDataItemById:(NSInteger) id{
-    FMResultSet *rs = [[sqlHelper getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _id = %i",TABLE_DATA_ITEM, id]];
+    FMResultSet *rs = [[[SqlHelper getInstance] getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _id = %li",TABLE_DATA_ITEM, (long)id]];
     DataItem* obj = [[DataItem alloc]init];
     if([rs next]){
         obj._name_sheet_id = [rs intForColumn:@"_name_sheet_id"];
@@ -373,8 +376,8 @@ static MyDBManager *instance;
 
 - (NSMutableArray*) getlistDataItemByNameSheet:(NameSheet*) nameSheet{
     NSMutableArray *list = [[NSMutableArray alloc] init];
-    FMResultSet *rs = [[sqlHelper getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _name_sheet_id = %i",
-                                                             TABLE_DATA_ITEM,[nameSheet _id]]];
+    FMResultSet *rs = [[[SqlHelper getInstance] getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _name_sheet_id = %li",
+                                                             TABLE_DATA_ITEM,(long)[nameSheet _id]]];
     while ([rs next]) {
         // just print out what we've got in a number of formats.
         DataItem *obj = [[DataItem alloc]init];
@@ -391,8 +394,8 @@ static MyDBManager *instance;
 }
 - (NSMutableArray*) getlistDataItemByNameSheetId:(NSInteger) nameSheet_id{
     NSMutableArray *list = [[NSMutableArray alloc] init];
-    FMResultSet *rs = [[sqlHelper getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _name_sheet_id = %i",
-                                                             TABLE_DATA_ITEM,nameSheet_id]];
+    FMResultSet *rs = [[[SqlHelper getInstance] getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _name_sheet_id = %li",
+                                                             TABLE_DATA_ITEM,(long)nameSheet_id]];
     while ([rs next]) {
         // just print out what we've got in a number of formats.
         DataItem *obj = [[DataItem alloc]init];
@@ -410,7 +413,7 @@ static MyDBManager *instance;
 }
 - (NSMutableArray*) getlistDataItem{
     NSMutableArray *list = [[NSMutableArray alloc] init];
-    FMResultSet *rs = [[sqlHelper getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@",TABLE_DATA_ITEM]];
+    FMResultSet *rs = [[[SqlHelper getInstance] getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@",TABLE_DATA_ITEM]];
     while ([rs next]) {
         // just print out what we've got in a number of formats.
         DataItem *obj = [[DataItem alloc]init];

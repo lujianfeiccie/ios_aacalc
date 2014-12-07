@@ -100,13 +100,16 @@
         NSArray * nib = [[NSBundle mainBundle] loadNibNamed:@"DataItemViewCell" owner:self options:nil] ;
         cell = [nib objectAtIndex:0];
     }
+   /* [PlatformUtil ResizeUILeftHalf:cell._txtCost parentView:self.view offsetLeft:0 offsetRight:0];
+    [PlatformUtil ResizeUIRightHalf:cell._txtNote parentView:self.view offsetLeft:0 offsetRight:0];
+    */
     cell.note = dataItem._note;
     cell.cost = dataItem._cost;
     //NSLogExt(@"%@",dataItem.toString);
     return cell;
 }
 
--(GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
 }
 
@@ -120,5 +123,9 @@
 
     NSLogExt(@"didSelectRowAtIndexPath row=%i",row);
 }
-
+- (void)dealloc{
+    [_tableview release];
+    [_datalist release];
+    [super dealloc];
+}
 @end

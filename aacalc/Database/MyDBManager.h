@@ -16,9 +16,7 @@
 #define TABLE_DATA_ITEM (@"TB_DATA_ITEM")  //Data item
 
 @interface MyDBManager : NSObject
-{
-    SqlHelper* sqlHelper;
-}
+
 + (MyDBManager*) getInstance;
 - (bool)createTables;
 

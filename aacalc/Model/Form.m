@@ -23,6 +23,6 @@
     return  self;
 }
 -(NSString*) toString{
-    return [NSString stringWithFormat:@"id=%i name=%@ total=%.1lf ave=%.1lf num Of person=%i",_id,_name,_total,_ave,_numOfPerson];
+    return [NSString stringWithFormat:@"id=%li name=%@ total=%.1lf ave=%.1lf num Of person=%li",(long)_id,_name,_total,_ave,(long)_numOfPerson];
 }
 @end

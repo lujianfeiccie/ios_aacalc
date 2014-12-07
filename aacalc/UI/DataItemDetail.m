@@ -8,14 +8,13 @@
 
 #import "DataItemDetail.h"
 #import "ButtonUtil.h"
-#import "DialogUtil.h"
+
 #import "PlatformUtil.h"
 #import "DataItem.h"
 #import "NSLogExt.h"
 #import "Util.h"
 #define NUMBERS @"0123456789."
 @interface DataItemDetail ()
-
 @end
 
 @implementation DataItemDetail
@@ -38,7 +37,7 @@
     
     if([cost isEqualToString:@""] ||
        cost == nil){
-        [DialogUtil createAlertDialog:@"提示" message:@"消费金额不能为空!" delegate:nil];
+        [m_dialog_add showDialogTitle:@"提示" message:@"消费金额不能为空!" confirm:@"知道了"];
         return;
     }
     MyDBManager *dbmanager = [MyDBManager getInstance];
@@ -51,27 +50,30 @@
     switch (_jumpType) {
         case Add:
         {
-            if([dbmanager insertDataItem:dataItem]){
-                [DialogUtil createAlertDialog:@"提示" message:@"添加成功" delegate:nil];
+            m_dialog_add.delegate = self;
+            if([dbmanager insertDataItem:dataItem])
+            {
+                [m_dialog_add showDialogTitle:@"提示" message:@"添加成功" confirm:@"知道了"];
             }else{
-                [DialogUtil createAlertDialog:@"提示" message:@"添加失败" delegate:nil];
+                [m_dialog_add showDialogTitle:@"提示" message:@"添加失败" confirm:@"知道了"];
             }
             
         }
             break;
         case Edit:
         {
+            m_dialog_add.delegate = self;
             if([dbmanager updateDataItem:dataItem]){
-                [DialogUtil createAlertDialog:@"提示" message:@"修改成功" delegate:nil];
+                [m_dialog_add showDialogTitle:@"提示" message:@"修改成功" confirm:@"知道了"];
             }else{
-                [DialogUtil createAlertDialog:@"提示" message:@"修改失败" delegate:nil];
+                [m_dialog_add showDialogTitle:@"提示" message:@"修改失败" confirm:@"知道了"];
             }
         }
             break;
         default:
             break;
     }
-    [[app navController] popViewControllerAnimated:YES];
+   
 
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -85,7 +87,7 @@
         BOOL basicTest = [string isEqualToString:filtered];
         if(!basicTest)
         {
-            [DialogUtil createAlertDialog:@"提示" message:@"请输入数字!" delegate:nil];
+            [m_dialog_add showDialogTitle:@"提示" message:@"请输入数字!" confirm:@"知道了"];
             return NO;
         }
         
@@ -93,7 +95,7 @@
         NSArray *split = [tmp componentsSeparatedByString:@"."];
         NSInteger numOfDot = [split count]-1;
         if(numOfDot>1){
-            [DialogUtil createAlertDialog:@"提示" message:@"超过一个小数点!" delegate:nil];
+            [m_dialog_add showDialogTitle:@"提示" message:@"超过一个小数点可不行哦!" confirm:@"知道了"];
             return NO;
         }
 //        NSLogExt(@"dot length=%i str=%@",[firstSplit count],tmp);
@@ -103,33 +105,33 @@
     return YES;
 }
 - (IBAction)ActionDelete:(id)sender {
-    [DialogUtil createDeleteAlertDialog:@"警告" message:@"确定要删除?" delegate:self];
+    [m_dialog_del_or_modified showDialogTitle:@"警告" message:@"确定要删除?" confirm:@"知道了" cancel:@"取消"];
+    m_dialog_del_or_modified.delegate = self;
 }
-#pragma marks -- UIAlertViewDelegate --
-//根据被点击按钮的索引处理点击事件
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+#pragma marks -- DialogUtilDelegate --
+-(void) onDialogConfirmClick : (DialogUtil*) dialog
 {
-    switch (buttonIndex) {
-        case 0:{
-            MyDBManager *dbmanager = [MyDBManager getInstance];
-            
-            if([dbmanager deleteDataItemById:_dataItemId]){
-                [DialogUtil createAlertDialog:@"提示" message:@"删除成功" delegate:nil];
-            }else{
-                [DialogUtil createAlertDialog:@"提示" message:@"删除失败" delegate:nil];
-            }
-            [[app navController] popViewControllerAnimated:YES];
+    dialog.delegate = nil;
+    if (dialog == m_dialog_del_or_modified) {
+        
+        MyDBManager *dbmanager = [MyDBManager getInstance];
+          DialogUtil *tmp_dialog = [[DialogUtil alloc]init];
+        if([dbmanager deleteDataItemById:_dataItemId]){
+            [tmp_dialog showDialogTitle:@"提示" message:@"删除成功" confirm:@"知道了"];
+        }else{
+            [tmp_dialog showDialogTitle:@"提示" message:@"删除失败" confirm:@"知道了"];
         }
-            break;
-        case 1:{
-           // [[app navController] popViewControllerAnimated:YES];
-        }
-            break;
-        default:
-            break;
+        tmp_dialog = nil;
+        [[app navController] popViewControllerAnimated:YES];
+    }
+    else if (dialog == m_dialog_add){
+         [[app navController] popViewControllerAnimated:YES];
     }
 }
-
+-(void) onDialogCancelClick : (DialogUtil*) dialog
+{
+    
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -144,7 +146,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     app = [[UIApplication sharedApplication] delegate];
-    
+    m_dialog_add = [[DialogUtil alloc] init];
+    m_dialog_del_or_modified = [[DialogUtil alloc] init];
     //触摸其它地方让键盘隐藏
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(textfieldTouchUpOutside:)];
     [self.view addGestureRecognizer:singleTap];
@@ -187,7 +190,10 @@
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     [PlatformUtil ResizeUIAll:self.view];
-    
+    [PlatformUtil ResizeUIToFullWidth:_txtNote parentView:self.view];
+    [PlatformUtil ResizeUIToFullWidth:_txtCost parentView:self.view];
+    [PlatformUtil ResizeUIToRight:_lblYuan parentView:self.view
+                          offsetX:self.view.frame.size.width - _txtCost.frame.size.width - _txtCost.frame.origin.x * 2];
     [PlatformUtil ResizeUIToBottom:_btnDelete parentView:self.view];
 }
 
@@ -219,5 +225,13 @@
     [Util editingKeyboard:self.view :textField];
 }
 #pragma mark -
-
+- (void)dealloc{
+    [_lblYuan release];
+    [_txtCost release];
+    [_txtNote release];
+    [_btnDelete release];
+    [m_dialog_del_or_modified release];
+    [m_dialog_add release];
+    [super dealloc];
+}
 @end

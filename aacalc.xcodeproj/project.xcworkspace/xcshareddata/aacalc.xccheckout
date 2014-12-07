@@ -10,31 +10,31 @@
 	<string>aacalc</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>C21DDD5D-D711-44EB-B9D5-891585F43F1E</key>
+		<key>2D71F6FCEF682045D5C0FFBB5E7B39F325A0FF9D</key>
 		<string>https://github.com/lujianfeiccie/ios_aacalc.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>aacalc.xcodeproj/project.xcworkspace</string>
+	<string>aacalc.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>C21DDD5D-D711-44EB-B9D5-891585F43F1E</key>
+		<key>2D71F6FCEF682045D5C0FFBB5E7B39F325A0FF9D</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/lujianfeiccie/ios_aacalc.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>C21DDD5D-D711-44EB-B9D5-891585F43F1E</string>
+	<string>2D71F6FCEF682045D5C0FFBB5E7B39F325A0FF9D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C21DDD5D-D711-44EB-B9D5-891585F43F1E</string>
+			<string>2D71F6FCEF682045D5C0FFBB5E7B39F325A0FF9D</string>
 			<key>IDESourceControlWCCName</key>
-			<string>aacalc</string>
+			<string>ios_aacalc</string>
 		</dict>
 	</array>
 </dict>

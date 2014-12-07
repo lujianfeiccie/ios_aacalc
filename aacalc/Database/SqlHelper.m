@@ -10,21 +10,24 @@
 #import "NSLogExt.h"
 
 @implementation SqlHelper
-
-static SqlHelper *instance = nil;
-
-
-- (id) init{
-    NSLogExt(@"init");
-    isOpen = NO;
+- (id) init
+{
+    if(self=[super init])
+    {
+        NSLogExt(@"init");
+        isOpen = NO;
+    }
     return self;
 }
-- (BOOL) open{
-    if (isOpen) {
+- (BOOL) open
+{
+    if (isOpen)
+    {
         return YES;
     }
     NSLogExt(@"open");
-    if (![db open]) {
+    if (![m_db open])
+    {
         NSLogExt(@"Could not open db.");
         return NO;
     }
@@ -34,8 +37,10 @@ static SqlHelper *instance = nil;
 }
 - (BOOL) close
 {
-    if(isOpen){
-     if (![db close]) {
+    if(isOpen)
+    {
+     if (![m_db close])
+     {
          NSLogExt(@"Could not close db.");
         return  NO;
      }
@@ -48,21 +53,22 @@ static SqlHelper *instance = nil;
 - (FMDatabase*)getDatabase
 {
    
-    if (db==nil) {
+    if (m_db==nil) {
         NSLogExt(@"getDatabase");
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentDirectory = [paths objectAtIndex:0];
         //dbPath： 数据库路径，在Document中。
         NSString *dbPath = [documentDirectory stringByAppendingPathComponent:DB_NAME];
         
-        db = [FMDatabase databaseWithPath:dbPath];
+        m_db = [FMDatabase databaseWithPath:dbPath];
     }
     [self open];
-    return db;
+    return m_db;
 }
 
 + (SqlHelper*) getInstance
 {
+    static SqlHelper *instance = nil;
     @synchronized(self){
         if (instance == nil) {
              instance = [[SqlHelper alloc] init];
@@ -74,7 +80,7 @@ static SqlHelper *instance = nil;
 -(void) showAllTables{
     NSLogExt(@"showAllTables");
     FMDatabase *db = [self getDatabase];
-   FMResultSet *rs = [db executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;"];
+    FMResultSet *rs = [db executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;"];
     
     while ([rs next]) {
         NSLogExt([rs stringForColumn:@"name"]);

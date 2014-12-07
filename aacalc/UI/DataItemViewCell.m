@@ -7,7 +7,7 @@
 //
 
 #import "DataItemViewCell.h"
-
+#import "PlatformUtil.h"
 @implementation DataItemViewCell
 @synthesize _txtCost;
 @synthesize _txtNote;
@@ -22,6 +22,13 @@
     return self;
 }
 
+-(void)layoutSubviews {
+    [super layoutSubviews];
+   /* [PlatformUtil ResizeUILeftHalf:_txtCost parentView:self offsetLeft:0 offsetRight:0];
+    [PlatformUtil ResizeUIRightHalf:_txtNote parentView:self offsetLeft:0 offsetRight:0];*/
+    //self.backgroundView.frame = CGRectMake(0, 0, 640, 44);
+   // self.selectedBackgroundView.frame = CGRectMake(9, 0, 302, 44);
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];

@@ -8,15 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-
-@interface NameSheetDetail : UIViewController
+#import "DialogUtil.h"
+@interface NameSheetDetail : UIViewController<DialogUtilDelegate>
 {
     AppDelegate *app;
-    __weak IBOutlet UITextField *_txtName;
+  
     NSInteger _nameSheetId;
     NSInteger _formId;
     JumpType _jumpType;
+    __weak IBOutlet UITextField *_txtName;
     __weak IBOutlet UIButton *_btnDelete;
+    
+    DialogUtil *m_dialog_add;
+    DialogUtil *m_dialog_del_or_modified;
 }
 -(void) setModel: (NSInteger) nameSheetId formId :(NSInteger) formId JumpToDo :(JumpType) jumpType;
 -(void) toolBarBack;

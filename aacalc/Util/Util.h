@@ -1,18 +1,20 @@
 //
 //  Util.h
-//  aacalc
+//  Multi_Choice
 //
-//  Created by Apple on 14-8-23.
+//  Created by Apple on 14-8-25.
 //  Copyright (c) 2014年 Apple. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 @interface Util : NSObject
-{
-    
-}
-+(void) showKeyboard:(UIView*) view;
-+(void) hideKeyboard:(UIView*) view;
++(void) setLabelToAutoSize:(UILabel*) label;
++(NSUInteger*) getRandomNumOfOut:(NSUInteger) numOfOut NumOfIn : (NSUInteger) numOfIn;
++(NSString*) getDate;
++(BOOL) isTimeToCheckVersion;
++(BOOL) containString : (NSString*) str1 :(NSString*) str2;
++(void) showKeyboard: (UIView*) view;
++(void) hideKeyboard: (UIView*) view;
 +(void) editingKeyboard:(UIView*) view :(UITextField*) text;
 @end

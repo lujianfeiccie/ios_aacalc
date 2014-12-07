@@ -12,12 +12,12 @@
 #define DB_OEPN_INTERVAL 10
 @interface SqlHelper : NSObject
 {
-    FMDatabase *db;
+    FMDatabase *m_db;
     BOOL isOpen;
 }
 - (BOOL) open;
 - (BOOL) close;
 - (FMDatabase*)getDatabase;
-+ (FMDatabase*) getInstance;
++ (SqlHelper*) getInstance;
 - (void) showAllTables;
 @end

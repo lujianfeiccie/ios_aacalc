@@ -14,6 +14,7 @@ UITableViewDataSource>
     AppDelegate *app;
     __weak IBOutlet UITableView *_tableview;
     NSMutableArray* _datalist;
+     VersionCheckTool *m_versionCheckTool;
 }
 -(IBAction)ActionEdit:(UIControl *)sender event:(id)event;
 -(void) toolBarAbout;

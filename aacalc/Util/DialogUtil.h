@@ -8,8 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DialogUtil : NSObject
-+(void) createAlertDialog: (NSString *)title message:(NSString *)message delegate:(id /*<UIAlertViewDelegate>*/)delegate;
-+(void) createDeleteAlertDialog: (NSString *)title message:(NSString *)message delegate:(id /*<UIAlertViewDelegate>*/)delegate;
+@class DialogUtil;
 
+//接口定义
+@protocol DialogUtilDelegate <NSObject>
+@required
+#pragma marks -- DialogUtilDelegate --
+-(void) onDialogConfirmClick : (DialogUtil*) dialog;
+-(void) onDialogCancelClick : (DialogUtil*) dialog;
+@optional
+-(void) onDialogTextReceive : (DialogUtil*) dialog Text :(NSString*) text;
+@end
+
+@interface DialogUtil : NSObject<UIAlertViewDelegate>
+
+@property(nonatomic,strong) id<DialogUtilDelegate> delegate;
+
+-(void) showDialogTitle: (NSString *)title message:(NSString *)message confirm :(NSString*) confirm;
+-(void) showDialogTitle: (NSString *)title message:(NSString *)message confirm :(NSString*) confirm cancel :(NSString*) cancel;
+-(void) showDialogWithInputTitle: (NSString *)title message:(NSString *)message confirm :(NSString*) confirm cancel :(NSString*) cancel;
 @end

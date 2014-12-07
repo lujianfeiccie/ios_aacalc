@@ -55,8 +55,10 @@
     _tableview.dataSource = self;
     
     
-   
-   
+    m_versionCheckTool = [[VersionCheckTool alloc]init];
+    m_versionCheckTool.m_app_id = GLOBAL_APP_ID;
+    m_versionCheckTool.m_isAboutDlg = NO;
+    [m_versionCheckTool request];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -127,7 +129,7 @@
     }
 }
 
--(GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 90;
 }
 
@@ -140,5 +142,10 @@
     [[app navController] pushViewController:next animated:YES];
     
         NSLogExt(@"didSelectRowAtIndexPath row=%i",row);
+}
+- (void)dealloc{
+    [_datalist release];
+    [m_versionCheckTool release];
+    [super dealloc];
 }
 @end

@@ -7,14 +7,16 @@
 //
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-
-@interface FormDetail: UIViewController<UIAlertViewDelegate>
+#import "DialogUtil.h"
+@interface FormDetail: UIViewController<DialogUtilDelegate>
 {
     AppDelegate* app;
     __weak IBOutlet UITextField *_txtFormName;
     NSInteger _form_id;
     JumpType _jumpType;
     __weak IBOutlet UIButton *_btnDelete;
+    DialogUtil *m_dialog_add;
+    DialogUtil *m_dialog_del_or_modified;
 }
 -(void) setModel: (NSInteger) form_id JumpToDo :(JumpType) jumpType;
 -(void) toolBarBack;

@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "MyDBManager.h"
-
+#import "ViewControllerFactory.h"
+#import "DialogUtil.h"
+#import "HttpRequestTool.h"
+#import "ButtonUtil.h"
+#import "PlatformUtil.h"
+#import "SVProgressHUD.h"
+#import "NSLogExt.h"
+#import "VersionCheckTool.h"
 typedef enum{
     Add,
     Edit

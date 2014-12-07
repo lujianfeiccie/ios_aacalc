@@ -53,6 +53,14 @@
 }
 -(void)setFormNumOfPerson:(NSInteger)f{
     formNumOfPerson = f;
-    _lblFormNumOfPerson.text = [NSString stringWithFormat:@"%i人行",f];
+    _lblFormNumOfPerson.text = [NSString stringWithFormat:@"%li人行",(long)f];
+}
+- (void)dealloc{
+    [_lblFormName release];
+    [_lblFormTotal release];
+    [_lblFormAve release];
+    [_lblFormNumOfPerson release];
+    [_btnEdit release];
+    [super dealloc];
 }
 @end

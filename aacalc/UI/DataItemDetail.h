@@ -8,16 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-@interface DataItemDetail : UIViewController<UITextViewDelegate>
+#import "DialogUtil.h"
+@interface DataItemDetail : UIViewController<UITextFieldDelegate,DialogUtilDelegate>
 {
     AppDelegate *app;
-    __weak IBOutlet UITextField *_txtCost;
-    __weak IBOutlet UITextField *_txtNote;
-   
     NSInteger _dataItemId;
     NSInteger _nameSheetId;
+    
     JumpType _jumpType;
+    
+    __weak IBOutlet UITextField *_txtCost;
+    __weak IBOutlet UITextField *_txtNote;
     __weak IBOutlet UIButton *_btnDelete;
+    
+    IBOutlet UILabel *_lblYuan;
+    DialogUtil *m_dialog_add;
+    DialogUtil *m_dialog_del_or_modified;
 }
 -(void) setModel: (NSInteger) dataItemId nameSheetId :(NSInteger) nameSheetId JumpToDo :(JumpType) jumpType;
 -(void) toolBarBack;

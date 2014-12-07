@@ -22,6 +22,6 @@
     return  self;
 }
 -(NSString*) toString{
-    return [NSString stringWithFormat:@"id=%i cost=%.1lf _note=%@ _name_sheet_id=%i",_id,_cost,_note,_name_sheet_id];
+    return [NSString stringWithFormat:@"id=%li cost=%.1lf _note=%@ _name_sheet_id=%li",(long)_id,_cost,_note,(long)_name_sheet_id];
 }
 @end

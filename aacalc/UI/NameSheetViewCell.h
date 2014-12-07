@@ -14,6 +14,6 @@
 @property(retain,nonatomic) IBOutlet UIButton* _btnEdit;
 @property(retain,nonatomic) IBOutlet UILabel* _lblSheetResult;
 @property(copy,nonatomic) NSString* sheetName;
-@property(nonatomic) double sheetTotal;
-@property(nonatomic) double sheetResult;
+@property(nonatomic) CGFloat sheetTotal;
+@property(nonatomic) CGFloat sheetResult;
 @end
