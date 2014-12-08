@@ -126,7 +126,7 @@
     m_dialog_add = [[DialogUtil alloc]init];
     m_dialog_del_or_modified = [[DialogUtil alloc] init];
     
-    self.navigationItem.leftBarButtonItem = [ButtonUtil createToolBarButton:@"返回" target:self action:@selector(toolBarBack)];
+   // self.navigationItem.leftBarButtonItem = [ButtonUtil createToolBarButton:@"返回" target:self action:@selector(toolBarBack)];
     
     self.navigationItem.rightBarButtonItem = [ButtonUtil createToolBarButton:@"确定" target:self action:@selector(toolBarFinish)];
 
