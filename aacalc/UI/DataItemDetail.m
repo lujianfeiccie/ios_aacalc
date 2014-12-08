@@ -105,7 +105,7 @@
     return YES;
 }
 - (IBAction)ActionDelete:(id)sender {
-    [m_dialog_del_or_modified showDialogTitle:@"警告" message:@"确定要删除?" confirm:@"知道了" cancel:@"取消"];
+    [m_dialog_del_or_modified showDialogTitle:@"警告" message:@"确定要删除?" confirm:@"确定" cancel:@"取消"];
     m_dialog_del_or_modified.delegate = self;
 }
 #pragma marks -- DialogUtilDelegate --

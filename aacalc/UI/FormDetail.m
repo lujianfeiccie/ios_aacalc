@@ -29,7 +29,7 @@
     
     if ([formName isEqualToString:@""] ||
         formName == nil) {
-       
+        m_dialog_add.delegate = nil;
         [m_dialog_add showDialogTitle:@"提示" message:@"名称不能为空" confirm:@"知道了"];
         return;
     }
@@ -37,7 +37,7 @@
     
     MyDBManager *dbmanager = [MyDBManager getInstance];
     Form *form = [[Form alloc] init];
-    form._id = _form_id;
+    form = [dbmanager getFormById:_form_id];
     form._name = formName;
     
     switch (_jumpType) {

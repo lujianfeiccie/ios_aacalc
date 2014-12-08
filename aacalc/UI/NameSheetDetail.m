@@ -25,15 +25,16 @@
     if ([name isEqualToString:@""] ||
         name == nil) {
       //  [DialogUtil createAlertDialog:@"提示" message:@"姓名不能为空!" delegate:nil];
-        
+        m_dialog_add.delegate = nil;
+        [m_dialog_add showDialogTitle:@"提示" message:@"姓名不能为空!" confirm:@"知道了"];
         return;
     }
     MyDBManager *dbmanager = [MyDBManager getInstance];
     
     NameSheet* namesheet = [[NameSheet alloc] init];
+    namesheet = [dbmanager getNameSheetById:_nameSheetId];
     namesheet._form_id = _formId;
     namesheet._name = name;
-    namesheet._id = _nameSheetId;
     switch (_jumpType) {
         case Add:
         {

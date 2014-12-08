@@ -115,6 +115,7 @@ static MyDBManager *instance;
         form._id = [rs intForColumn:@"_id"];
         form._name = [rs stringForColumn:@"_name"];
         form._total = [rs doubleForColumn:@"_total"];
+        form._ave = [rs doubleForColumn:@"_ave"];
         form._numOfPerson = [rs intForColumn:@"_numOfPerson"];
     }
     [rs close];
@@ -239,8 +240,9 @@ static MyDBManager *instance;
 - (NSMutableArray*) getlistNameSheetByFormId:(NSInteger) form_id
 {
     NSMutableArray *list = [[NSMutableArray alloc] init];
-    FMResultSet *rs = [[[SqlHelper getInstance] getDatabase] executeQuery:[NSString stringWithFormat:@"SELECT * from %@ where _form_id = %li",
-                                                             TABLE_NAME_SHEET,(long)form_id]];
+    NSString *sql =[NSString stringWithFormat:@"SELECT * from %@ where _form_id = %li",
+                    TABLE_NAME_SHEET,(long)form_id];
+    FMResultSet *rs = [[[SqlHelper getInstance] getDatabase] executeQuery:sql];
     NSLogExt(@"formid = %i",form_id);
     while ([rs next]) {
         // just print out what we've got in a number of formats.
